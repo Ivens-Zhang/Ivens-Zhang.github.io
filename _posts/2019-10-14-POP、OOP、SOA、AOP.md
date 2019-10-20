@@ -4,7 +4,6 @@ title: "简单理解POP、OOP、SOA、AOP的概念、适用与优缺点？"
 subtitle: '编程思想就是一种解决现实问题的一种思考方式。'
 author: "Ivens"
 header-style: text
-lang: en
 tags:
   - 编程
 ---
