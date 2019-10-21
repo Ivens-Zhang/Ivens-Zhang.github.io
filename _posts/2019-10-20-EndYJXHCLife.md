@@ -3,7 +3,8 @@ layout: post
 title: "御锦馨河城的生活告一段落"
 subtitle: '收房的那些事，以及目前的结果。'
 author: "Ivens"
-header-style: text
+header-mask: 0.4
+header-img: "img/in-post/2019-10-20/header.jpg"
 tags:
   - 生活
 ---
