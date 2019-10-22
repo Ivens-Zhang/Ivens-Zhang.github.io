@@ -74,6 +74,7 @@ tags:
 
 **当然，项目上的困难只是一时的，我心里难过的是谢旺东走了，我这三个月就真的很孤独了。**
 
-![](../img/in-post/2019-08-17/a.jpg)
+
+![](img/in-post/2019-08-17/a.jpg)
 
 [1]:https://baike.baidu.com/item/%E7%A5%9E%E5%B7%9E%E4%BF%A1%E6%81%AF/6692706?fr=aladdin
