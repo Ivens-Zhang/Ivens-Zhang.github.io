@@ -3,7 +3,7 @@ layout: post
 title: "神州的面试与出乎意料的离别"
 subtitle: '近期事宜——2019年8月17日'
 author: "Ivens"
-header-mask: 0.2x 
+header-mask: 0.2
 header-img: "img/in-post/2019-08-17/a.jpg"
 tags:
   - 生活
