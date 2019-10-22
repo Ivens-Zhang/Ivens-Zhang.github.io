@@ -3,8 +3,7 @@ layout: post
 title: "神州的面试与出乎意料的离别"
 subtitle: '近期事宜——2019年8月17日'
 author: "Ivens"
-header-mask: 0.2
-header-img: "img/in-post/2019-08-17/a.jpg"
+header-style: text
 tags:
   - 生活
 ---
@@ -74,5 +73,7 @@ tags:
 其实那天我心情真的很低落，我的项目一直困在Mybatis一对多的地方，我大约在那看了一个多小时，想着想着就钻进了死胡同，一直到那天10:30才完全弄好。
 
 **当然，项目上的困难只是一时的，我心里难过的是谢旺东走了，我这三个月就真的很孤独了。**
+
+![](../img/in-post/2019-08-17/a.jpg)
 
 [1]:https://baike.baidu.com/item/%E7%A5%9E%E5%B7%9E%E4%BF%A1%E6%81%AF/6692706?fr=aladdin
