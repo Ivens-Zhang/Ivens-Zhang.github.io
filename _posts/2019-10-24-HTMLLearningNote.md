@@ -73,14 +73,14 @@ target 属性---你可以定义被链接的文档在何处显示。
 
 有序列表始于 `<ol>` 标签。每个列表项始于 `<li>` 标签。
 
-
-自定义列表以 <dl> 标签开始。每个自定义列表项以 <dt> 开始。每个自定义列表项的定义以 <dd> 开始。
+自定义列表以 `<dl>` 标签开始。每个自定义列表项以 `<dt>` 开始。每个自定义列表项的定义以 `<dd>` 开始。
+```
 <dl>
 <dt>Coffee</dt>
 <dd>Black hot drink</dd>
 </dl>
-
-列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。
+```
+**列表项内部可以使用段落、换行符、图片、链接以及其他列表等等。**
 
 *注意：HTML 标签对大小写不敏感：```<P>``` 等同于 ```<p>```。许多网站都使用大写的 HTML 标签，而在未来 (X)HTML 版本中强制使用小写。*
 
@@ -90,50 +90,49 @@ target 属性---你可以定义被链接的文档在何处显示。
 
 *注意：当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格。*
 
+##### 表单
 
+**表单用于搜集不同类型的用户输入。**
 
+1.`<input type="radio">` 定义单选按钮。<br>`<input type="checkbox">` 定义复选框。<br>
+**两个name=""属性要一样！**
 
-
-
-表单用于搜集不同类型的用户输入。
-
-<input type="radio"> 定义单选按钮。<input type="checkbox"> 定义复选框。两个name=""属性要一样！
-
-<input type="submit"> 定义用于向表单处理程序（form-handler）提交表单的按钮。表单处理程序在表单的 action 属性中指定，如果省略 action 属性，则 action 会被设置为当前页面。
+2.`<input type="submit">` 定义用于向表单处理程序（form-handler）提交表单的按钮。表单处理程序在表单的 action 属性中指定，如果省略 action 属性，则 action 会被设置为当前页面。
 
 method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）
 
-何时使用 GET？
+>何时使用 GET？
 您能够使用 GET（默认方法）：
 如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。当您使用 GET 时，表单数据在页面地址栏中是可见的
 注释：GET 最适合少量数据的提交。浏览器会设定容量限制。
 
-何时使用 POST？
+>何时使用 POST？
 您应该使用 POST：
 如果表单正在更新数据，或者包含敏感信息（例如密码）。POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。
 
-用 <fieldset> 组合表单数据，https://www.w3school.com.cn/tiy/t.asp?f=html_form_legend
-<fieldset> 元素组合表单中的相关数据
-<legend> 元素为 <fieldset> 元素定义标题。
+3.用 `<fieldset>` 组合表单数据，https://www.w3school.com.cn/tiy/t.asp?f=html_form_legend<br>
+`<fieldset>` 元素组合表单中的相关数据<br>
+`<legend>` 元素为 `<fieldset>` 元素定义标题。
 
-下拉框，通过添加 selected 属性来定义预定义选项
+4.下拉框，通过添加 selected 属性来定义预定义选项
+```html
 <select name="cars">
 <option value="volvo">Volvo</option>
 </select>
+```
 
+5.HTML5 `<datalist>` 元素，https://www.w3school.com.cn/tiy/t.asp?f=html_elements_datalist
 
-
-HTML5 <datalist> 元素，https://www.w3school.com.cn/tiy/t.asp?f=html_elements_datalist
-<datalist> 元素为 <input> 元素规定预定义选项列表。
+`<datalist>` 元素为 `<input> `元素规定预定义选项列表。
 用户会在他们输入数据时看到预定义选项的下拉列表。
-<input> 元素的 list 属性必须引用 <datalist> 元素的 id 属性。
+`<input>` 元素的 list 属性必须引用 `<datalist>` 元素的 id 属性。
 
-常见表单输入类型：https://www.w3school.com.cn/html/html_form_input_types.asp
+6.常见表单输入类型：https://www.w3school.com.cn/html/html_form_input_types.asp
 
-value 属性规定输入字段的初始值
-readonly 属性规定输入字段为只读（不能修改）
-disabled 属性规定输入字段是禁用的，是不可用和不可点击的，不会被提交。
-size 属性规定输入字段的尺寸（以字符计）
-maxlength 属性规定输入字段允许的最大长度
+- value 属性规定输入字段的初始值
+- readonly 属性规定输入字段为只读（不能修改）
+- disabled 属性规定输入字段是禁用的，是不可用和不可点击的，不会被提交。
+- size 属性规定输入字段的尺寸（以字符计）
+- maxlength 属性规定输入字段允许的最大长度
 
 [1]:https://www.w3school.com.cn/tags/tag_term_hypertext.asp
