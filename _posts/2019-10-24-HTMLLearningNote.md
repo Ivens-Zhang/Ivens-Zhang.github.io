@@ -96,8 +96,8 @@ target 属性---你可以定义被链接的文档在何处显示。
 
 > **表单用于搜集不同类型的用户输入。**
 
-**1.`<input type="radio">` 定义单选按钮。<br>`<input type="checkbox">` 定义复选框。**<br>
-**两个name=""属性要一样！** 
+**1.`<input type="radio">` 定义单选按钮与`<input type="checkbox">` 定义复选框。相同**<br>
+name=""属性要一样！ 
 
 **2.`<input type="submit">` 定义用于向表单处理程序（form-handler）提交表单的按钮。**
 
