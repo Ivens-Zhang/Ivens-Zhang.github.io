@@ -8,9 +8,6 @@ header-img: "img/in-post/2019-10-24/th.jpg"
 tags:
   - 前端学习笔记
 ---
-
-> **记录一下HTML学习**
-
 ### 一、带着问题学习
 
 ##### 1.html是什么
