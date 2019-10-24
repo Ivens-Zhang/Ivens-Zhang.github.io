@@ -44,8 +44,10 @@
 
 ---
 ### 后记
-这个博客的模板是[@Hux黄玄][1]的作品，十分感谢。
+这个博客的模板参考了GitHub上[@Hux黄玄][1]的作品，十分感谢。
 
-后面我会专门以Hux的项目为模板，写一篇博文，分享一下搭建个人博客的流程，以及中间的可能遇到的问题。
+后面我会专门以这个项目为模板，写一篇博文，分享一下如何利用GitHub Pages[2]和Jekyll[3]搭建个人博客，以及中间的可能遇到的问题。
 
 [1]:https://github.com/huxpro/huxpro.github.io/
+[2]:https://pages.github.com/
+[3]:http://jekyllcn.com/
