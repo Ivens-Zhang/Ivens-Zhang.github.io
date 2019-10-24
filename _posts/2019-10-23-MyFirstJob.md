@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "英特赛克——我的第一份工作"
-subtitle: '授人以鱼不如授人以渔；教会一个人技术，不如教给他正确的职业观。'
+subtitle: '授人以鱼不如授人以渔；教会一个人技术，不如教给他正确的工作观。'
 author: "Ivens"
 header-style: text
 tags:
