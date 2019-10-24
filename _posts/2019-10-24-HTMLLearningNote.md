@@ -96,10 +96,12 @@ target 属性---你可以定义被链接的文档在何处显示。
 
 > **表单用于搜集不同类型的用户输入。**
 
-1.`<input type="radio">` 定义单选按钮。<br>`<input type="checkbox">` 定义复选框。<br>
-**两个name=""属性要一样！**
+**1.`<input type="radio">` 定义单选按钮。<br>`<input type="checkbox">` 定义复选框。**<br>
+**两个name=""属性要一样！** 
 
-2.`<input type="submit">` 定义用于向表单处理程序（form-handler）提交表单的按钮。表单处理程序在表单的 action 属性中指定，如果省略 action 属性，则 action 会被设置为当前页面。
+**2.`<input type="submit">` 定义用于向表单处理程序（form-handler）提交表单的按钮。**
+
+表单处理程序在表单的 action 属性中指定，如果省略 action 属性，则 action 会被设置为当前页面。
 
 method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）
 
@@ -112,24 +114,24 @@ method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）
 您应该使用 POST：
 如果表单正在更新数据，或者包含敏感信息（例如密码）。POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。
 
-3.用 `<fieldset>` 组合表单数据，https://www.w3school.com.cn/tiy/t.asp?f=html_form_legend<br>
+**3.用 `<fieldset>` 组合表单数据，https://www.w3school.com.cn/tiy/t.asp?f=html_form_legend**<br>
 `<fieldset>` 元素组合表单中的相关数据<br>
 `<legend>` 元素为 `<fieldset>` 元素定义标题。
 
-4.下拉框，通过添加 selected 属性来定义预定义选项
+**4.下拉框，通过添加 selected 属性来定义预定义选项**
 ```html
 <select name="cars">
 <option value="volvo">Volvo</option>
 </select>
 ```
 
-5.HTML5 `<datalist>` 元素，https://www.w3school.com.cn/tiy/t.asp?f=html_elements_datalist
+**5.HTML5 `<datalist>` 元素，https://www.w3school.com.cn/tiy/t.asp?f=html_elements_datalist**
 
 `<datalist>` 元素为 `<input> `元素规定预定义选项列表。
 用户会在他们输入数据时看到预定义选项的下拉列表。
 `<input>` 元素的 list 属性必须引用 `<datalist>` 元素的 id 属性。
 
-6.常见表单输入类型：https://www.w3school.com.cn/html/html_form_input_types.asp
+**6.常见表单输入类型：https://www.w3school.com.cn/html/html_form_input_types.asp**
 
 - value 属性规定输入字段的初始值
 - readonly 属性规定输入字段为只读（不能修改）
