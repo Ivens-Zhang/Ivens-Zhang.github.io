@@ -3,7 +3,8 @@ layout: post
 title: "HTML学习笔记"
 subtitle: ''
 author: "Ivens"
-header-style: text
+header-mask: 0.2
+header-img: "img/in-post/2019-10-24/th.jpg"
 tags:
   - 前端学习笔记
 ---
