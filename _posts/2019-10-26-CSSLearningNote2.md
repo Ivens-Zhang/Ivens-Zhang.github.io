@@ -94,7 +94,7 @@ font-size属性。
 ***
 <center><strong>小demo——好看的表格</strong></center>
 
-![](../../../img/in-post/2019-10-26/a.png)
+![](../../../../img/in-post/2019-10-26/a.png)
 
 
 **代码如下：**
