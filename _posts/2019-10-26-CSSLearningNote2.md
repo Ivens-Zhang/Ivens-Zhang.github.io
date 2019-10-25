@@ -82,6 +82,10 @@ font-size属性。
 
 可以将以上列表样式属性合并为一个方便的属性：[list-style][3].
 
+###### 1.7CSS表格
+text-align 和 vertical-align 属性设置表格中文本的对齐方式。
+
+
 
 [1]:https://www.w3school.com.cn/cssref/pr_list-style-type.asp
 [2]:https://www.w3school.com.cn/cssref/pr_list-style-image.asp
