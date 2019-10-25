@@ -22,7 +22,7 @@ tags:
 - outline-style
 - outline-width
 
-*在CSS中注释写法为：/* */*
+> 在CSS中注释写法为：/* */
 
 <center><strong>demo——在元素周围画线</strong></center>
 ![](../../../../img/in-post/2019-10-27/b.png)
