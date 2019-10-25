@@ -3,7 +3,7 @@ layout: post
 title: "CSS学习笔记"
 subtitle: ''
 author: "Ivens"
-header-mask: 0.2
+header-mask: 0.1
 header-img: "img/in-post/2019-10-25/th.jpg"
 tags:
   - 前端学习笔记
@@ -65,7 +65,7 @@ h1,h2,h3,h4,h5,h6 {
 
 ###### 1.4选择器
 
-**上下文选择器 (contextual selectors)，这是由于它们依赖于上下文关系来应用或者避免某项规则。**
+**①上下文选择器 (contextual selectors)，这是由于它们依赖于上下文关系来应用或者避免某项规则。**
 
 希望列表中的 strong 元素变为斜体字
 ```css
@@ -75,12 +75,103 @@ li strong {
   }
 ```
 
-**id 选择器以 "#" 来定义,常常用于建立派生选择器。**
+**②id 选择器以 "#" 来定义,常常用于建立派生选择器。**
 
-**类选择器以一个点号显示,和 id 一样，class 也可被用作派生选择器。**
+**③类选择器以一个点号显示,和 id 一样，class 也可被用作派生选择器。**
+
+**④属性选择器可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。**
+```css
+input[type="button"]
+{
+  width:120px;
+}
+```
+
+###### 1.5多重样式
+
+越靠近越优先，内部没有提到的则继承外部的样式。
 
 ###### 注意事项
 
 - 如果值为若干单词，则要给值加引号
 - 用分号将每个声明分开
 - 如果涉及到与 HTML 文档一起工作的话，class 和 id 名称对大小写是敏感的。
+
+#### 2.CSS背景
+
+###### 2.1背景图像
+需要使用 background-image 属性
+```css
+body{
+    background-image:url(a.gif);
+}
+```
+
+###### 2.2背景重复
+
+可以使用background-repeat属性，repeat-x和repeat-y分别导致图像在水平或垂直方向上重复，no-repeat则不允许图像重复。
+
+```css
+body{
+    background-image:url(a.gif);
+    background-repeat: repeat-y;
+}
+```
+
+###### 2.3背景定位
+
+background-position属性。可以使用：top、bottom、left、right、center。
+
+也可以使用百分数值或长度值：
+```css
+body
+  { 
+    background-image:url('/i/eg_bg_03.gif');
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+  }
+```
+```css
+background-position:50px 100px;
+```
+
+###### 2.4背景关联(提高)
+
+###### 2.5属性简写
+
+```css
+body
+{ 
+background:  url(/i/eg_bg_03.gif) repeat-x fixed top; 
+}
+```
+
+#### 3.CSS文本
+
+###### 3.1缩进
+
+```
+p {text-indent: 5em;} //可以设置为负值与百分比
+```
+
+###### 3.2对齐
+
+使用text-align属性。
+
+> text-align:center 与 `<CENTER>` <br>
+您可能会认为 text-align:center 与 `<CENTER>` 元素的作用一样，但实际上二者大不相同。<br>
+`<CENTER>` 不仅影响文本，还会把整个元素居中。text-align 不会控制元素的对齐，而只影响内部内容。元素本身不会从一段移到另一端，只是其中的文本受影响。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
