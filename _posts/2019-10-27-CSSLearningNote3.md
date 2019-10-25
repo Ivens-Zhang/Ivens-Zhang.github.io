@@ -13,7 +13,7 @@ tags:
 
 ![](../../../img/in-post/2019-10-27/a.png)
 
-##### 1.1Outline
+##### Outline
 
 **outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。**
 
@@ -21,6 +21,8 @@ tags:
 - outline-color
 - outline-style
 - outline-width
+
+*在CSS中注释写法为：/* */*
 
 <center><strong>demo——在元素周围画线</strong></center>
 ![](../../../../img/in-post/2019-10-27/b.png)
