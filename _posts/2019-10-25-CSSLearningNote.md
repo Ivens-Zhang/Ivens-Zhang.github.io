@@ -184,6 +184,22 @@ text-transform 属性处理文本的大小写。这个属性有 4 个值：
 - lowercase
 - capitalize
 
+###### 3.5文本装饰
+
+text-decoration 有 5 个值：
+- none
+- underline
+- overline
+- line-through
+- blink
+
+**注意：text-decoration 值会替换而不是累积起来。**
+###### 3.6处理空白符
+
+white-space 属性
+
+当 white-space 属性设置为 normal 时，会合并所有的空白符，并忽略换行符。
+
 
 
 
