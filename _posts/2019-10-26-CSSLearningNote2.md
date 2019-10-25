@@ -67,3 +67,22 @@ font-size属性。
 - a:visited - 用户已访问的链接
 - a:hover - 鼠标指针位于链接的上方
 - a:active - 链接被点击的时刻
+
+**background-color 属性规定链接的背景色**
+
+注意，请按照以下次序规则：
+
+*a:hover 必须位于 a:link 和 a:visited 之后*
+*a:active 必须位于 a:hover 之后*
+
+
+###### 1.6 CSS 列表
+
+使用[list-style-type][1]和[ list-style-image][2]改变列表标志。
+
+可以将以上列表样式属性合并为一个方便的属性：[list-style][3].
+
+
+[1]:https://www.w3school.com.cn/cssref/pr_list-style-type.asp
+[2]:https://www.w3school.com.cn/cssref/pr_list-style-image.asp
+[3]:https://www.w3school.com.cn/cssref/pr_list-style-position.asp
