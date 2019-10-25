@@ -80,10 +80,13 @@ font-size属性。
 
 使用[list-style-type][1]和[ list-style-image][2]改变列表标志。
 
-可以将以上列表样式属性合并为一个方便的属性：[list-style][3].
+也可以将以上列表样式属性合并为一个方便的属性：[list-style][3].
 
 ###### 1.7CSS表格
-text-align 和 vertical-align 属性设置表格中文本的对齐方式。
+**text-align 属性设置水平对齐方式，比如左对齐、右对齐或者居中**
+
+**vertical-align 属性设置垂直对齐方式，比如顶部对齐、底部对齐或居中对齐**
+
 
 
 
