@@ -42,3 +42,6 @@ p {border-style: solid; border-width: 15px 5px 15px 5px;}
 ```css
 p {margin: 20px 30px 30px 20px;}
 ```
+
+### CSS 外边距合并
+外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的**外边距的高度中的较大者**。
