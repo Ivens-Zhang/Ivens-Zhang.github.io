@@ -29,3 +29,10 @@ tags:
 **可以按照上、右、下、左的顺序分别设置各边的内边距,可以使用不同的单位或百分比值,百分数值是相对于其父元素的 width 计算的.**
 
 
+### CSS 边框
+**定义单边宽度**
+```
+p {border-style: solid; border-width: 15px 5px 15px 5px;}
+```
+- *注意：由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none。因此，如果您希望边框出现，就必须声明一个边框样式。*
+- *CSS2 引入了边框颜色值 transparent。这个值用于创建有宽度的不可见边框。请看下面的例子：*
