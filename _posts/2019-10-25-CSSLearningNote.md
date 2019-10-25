@@ -140,57 +140,7 @@ body
 background:  url(/i/eg_bg_03.gif) repeat-x fixed top; 
 }
 ```
-***
-#### 3.CSS文本
 
-###### 3.1缩进
-
-```
-p {text-indent: 5em;} //可以设置为负值与百分比
-```
-
-###### 3.2对齐
-
-使用text-align属性。
-
- **text-align:center 与 `<CENTER>`** 
-
-您可能会认为 text-align:center 与 `<CENTER>` 元素的作用一样，但实际上二者大不相同。<br>
-`<CENTER>` 不仅影响文本，还会把整个元素居中。text-align 不会控制元素的对齐，而只影响内部内容。元素本身不会从一段移到另一端，只是其中的文本受影响。
-
-**水平对齐属性是 justify**
-
-在两端对齐文本中，文本行的左右两端都放在父元素的内边界上。然后，调整单词和字母间的间隔，使各行的长度恰好相等。
-
-###### 3.3字间隔
-
-word-spacing 属性可以改变字（单词）之间的标准间隔。其默认值 normal 与设置值为 0 是一样的。(**中文无效**)
-
-letter-spacing 属性与 word-spacing 的区别在于，字母间隔修改的是字符或字母之间的间隔。(**中文有效**)
-
-###### 3.4大小写转换
-
-text-transform 属性处理文本的大小写。这个属性有 4 个值：
-- none
-- uppercase
-- lowercase
-- capitalize
-
-###### 3.5文本装饰
-
-text-decoration 有 5 个值：
-- none
-- underline
-- overline
-- line-through
-- blink
-
-**注意：text-decoration 值会替换而不是累积起来。**
-###### 3.6处理空白符
-
-white-space 属性
-
-当 white-space 属性设置为 normal 时，会合并所有的空白符，并忽略换行符。
 
 
 
