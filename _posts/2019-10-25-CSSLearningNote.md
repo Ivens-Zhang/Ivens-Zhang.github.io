@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CSS学习笔记"
+title: "CSS学习笔记（一）"
 subtitle: ''
 author: "Ivens"
 header-mask: 0.1
@@ -14,9 +14,9 @@ tags:
 
 CSS 指层叠样式表 (Cascading Style Sheets)，样式定义如何显示 HTML 元素。
 
-> 由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。
+> **由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难.**
 
-> 为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。
+> **为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。**
 
 **②css的语法是怎么样的结构？**
 
