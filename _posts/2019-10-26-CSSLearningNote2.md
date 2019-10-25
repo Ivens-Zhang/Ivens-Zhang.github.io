@@ -92,10 +92,12 @@ font-size属性。
 **background-color控制表格背景色。**
 
 ***
-![](../img/in-post/2019-10-26/a.png)
-<center>小demo——好看的表格</center>
+<center><strong>小demo——好看的表格</strong></center>
 
-**代码**
+![](../img/in-post/2019-10-26/a.png)
+
+
+**代码如下：**
 ```html
 <!DOCTYPE html>
 <html lang="en">
