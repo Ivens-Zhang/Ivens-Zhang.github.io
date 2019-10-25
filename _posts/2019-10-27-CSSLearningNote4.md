@@ -36,3 +36,9 @@ p {border-style: solid; border-width: 15px 5px 15px 5px;}
 ```
 - *注意：由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none。因此，如果您希望边框出现，就必须声明一个边框样式。*
 - *CSS2 引入了边框颜色值 transparent。这个值用于创建有宽度的不可见边框。请看下面的例子：*
+
+### CSS 外边距
+格式类似边框写法：
+```css
+p {margin: 20px 30px 30px 20px;}
+```
