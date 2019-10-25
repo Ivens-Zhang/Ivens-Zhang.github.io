@@ -23,7 +23,7 @@ tags:
 - outline-width
 
 <center><strong>demo——在元素周围画线</strong></center>
-![](../../../img/in-post/2019-10-27/b.png)
+![](../../../../img/in-post/2019-10-27/b.png)
 
 **代码如下**
 ```html
