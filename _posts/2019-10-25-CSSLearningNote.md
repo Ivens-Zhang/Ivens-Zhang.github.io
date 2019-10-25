@@ -14,8 +14,9 @@ tags:
 
 CSS 指层叠样式表 (Cascading Style Sheets)，样式定义如何显示 HTML 元素。
 
-> 由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。<br>
-为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。
+> 由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。
+
+> 为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。
 
 **②css的语法是怎么样的结构？**
 
@@ -97,6 +98,8 @@ input[type="button"]
 - 用分号将每个声明分开
 - 如果涉及到与 HTML 文档一起工作的话，class 和 id 名称对大小写是敏感的。
 
+***
+
 #### 2.CSS背景
 
 ###### 2.1背景图像
@@ -145,7 +148,7 @@ body
 background:  url(/i/eg_bg_03.gif) repeat-x fixed top; 
 }
 ```
-
+***
 #### 3.CSS文本
 
 ###### 3.1缩进
@@ -158,11 +161,28 @@ p {text-indent: 5em;} //可以设置为负值与百分比
 
 使用text-align属性。
 
-> text-align:center 与 `<CENTER>` <br>
+ **text-align:center 与 `<CENTER>`** 
+
 您可能会认为 text-align:center 与 `<CENTER>` 元素的作用一样，但实际上二者大不相同。<br>
 `<CENTER>` 不仅影响文本，还会把整个元素居中。text-align 不会控制元素的对齐，而只影响内部内容。元素本身不会从一段移到另一端，只是其中的文本受影响。
 
+**水平对齐属性是 justify**
 
+在两端对齐文本中，文本行的左右两端都放在父元素的内边界上。然后，调整单词和字母间的间隔，使各行的长度恰好相等。
+
+###### 3.3字间隔
+
+word-spacing 属性可以改变字（单词）之间的标准间隔。其默认值 normal 与设置值为 0 是一样的。**中文无效**
+
+letter-spacing 属性与 word-spacing 的区别在于，字母间隔修改的是字符或字母之间的间隔。**中文有效**
+
+###### 3.4大小写转换
+
+text-transform 属性处理文本的大小写。这个属性有 4 个值：
+- none
+- uppercase
+- lowercase
+- capitalize
 
 
 
