@@ -25,3 +25,27 @@ CSS 有三种基本的定位机制：**普通流、浮动和绝对定位**。
 元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。
 
 ![](../../../../img/in-post/2019-10-27/c.png)
+
+<hr>
+
+### CSS 浮动
+通过 float 属性实现元素的浮动。
+![](../../../../img/in-post/2019-10-27/d.gif)
+
+**使用clear 属性,使图像的左侧和右侧均不允许出现浮动元素：**
+```css
+img
+  {
+  float:left;
+  clear:both;
+  }
+```
+[小demo][1]
+
+<center><strong>我的demo</strong></center>
+![](../../../../img/in-post/2019-10-27/d.png)
+
+
+[1]:https://www.w3school.com.cn/tiy/t.asp?f=csse_float6
+
+
