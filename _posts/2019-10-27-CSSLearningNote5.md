@@ -30,7 +30,7 @@ CSS 有三种基本的定位机制：**普通流、浮动和绝对定位**。
 
 ### CSS 浮动——[demo][1]
 通过 float 属性实现元素的浮动。
-![](../../../img/in-post/2019-10-27/d.gif)
+![](../../../../img/in-post/2019-10-27/d.gif)
 
 **使用clear 属性,使图像的左侧和右侧均不允许出现浮动元素：**
 ```css
@@ -42,7 +42,7 @@ img
 ```
 
 <center><strong>我的demo</strong></center>
-![](../../../img/in-post/2019-10-27/d.png)
+![](../../../../img/in-post/2019-10-27/d.png)
 
 ```html
 <!DOCTYPE html>
