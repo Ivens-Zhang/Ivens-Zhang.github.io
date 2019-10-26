@@ -44,6 +44,76 @@ img
 <center><strong>我的demo</strong></center>
 ![](../../../img/in-post/2019-10-27/d.png)
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #all {
+            border: 1px solid gray;
+            line-height: 150%;
+            width: 100%;
+        }
+
+        .header,
+        .footer {
+            background-color: gray;
+            color: white;
+            padding: 0.4em;
+            clear: both;
+        }
+
+        h1.header {
+            margin: -10px;
+        }
+
+        p.footer {
+            margin: -5px;
+        }
+
+        .left {
+            float: left;
+            width: 150px;
+            padding: 2em;
+        }
+
+        .txt {
+            margin-left: 200px;
+            border-left: 1px solid gray;
+            padding: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <div class="header">
+            <h1 class="header">W3School.com.cn</h1>
+        </div>
+        <div>
+            <p class="left">"Never increase, beyond what is necessary, the number of entities required to explain
+                anything." William
+                of Ockham (1285-1349)</p>
+        </div>
+        <div class="txt">
+            <h2>Free Web Building Tutorials</h2>
+            <p>At W3School.com.cn you will find all the Web-building tutorials you need, from basic HTML and XHTML to
+                advanced XML, XSL, Multimedia and WAP.</p>
+            <p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+        </div>
+        <div class="footer">
+            <p class="footer">Copyright 2008 by YingKe Investment.</p>
+        </div>
+    </div>
+</body>
+
+</html>
+```
 
 [1]:https://www.w3school.com.cn/tiy/t.asp?f=csse_float6
 
