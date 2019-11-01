@@ -3,7 +3,8 @@ layout: post
 title: "11月近期计划"
 subtitle: '每个人最大的敌人总是他自己.'
 author: "Ivens"
-header-style: text
+header-mask: 0.2
+header-img: "img/in-post/2019-11-1/th.jpg"
 tags:
   - 生活
 ---
