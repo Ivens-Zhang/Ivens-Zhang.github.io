@@ -278,4 +278,273 @@ var mouseInSub = false;
 
 
 
+***
+
+### 源码
+**index.html:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="wrap" id="all">
+        <div id="dul">
+            <ul>
+                <li data-id="a">
+                    <span>服装</span>
+                </li>
+                <li data-id="b">
+                    <span>手机</span>
+                </li>
+                <li data-id="c">
+                    <span>家电</span>
+                </li>
+                <li data-id="a">
+                    <span>服装</span>
+                </li>
+                <li data-id="b">
+                    <span>手机</span>
+                </li>
+                <li data-id="c">
+                    <span>家电</span>
+                </li>
+                <li data-id="a">
+                    <span>服装</span>
+                </li>
+                <li data-id="b">
+                    <span>手机</span>
+                </li>
+                <li data-id="c">
+                    <span>家电</span>
+                </li>
+            </ul>
+        </div>
+        <div class="none" id="subMenu">
+            <div id="a" class="sub_content none">
+                <dl>
+                    <dt>
+                        <a href="#">运动<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">阿迪达斯</a>
+                        <a href="#">耐克</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">女装<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">LV</a>
+                        <a href="#">coach</a>
+                    </dd>
+                </dl>
+            </div>
+            <div id="b" class="sub_content none">
+                <dl>
+                    <dt>
+                        <a href="#">国产手机<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">小米</a>
+                        <a href="#">华为</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">进口手机<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">三星</a>
+                        <a href="#">苹果</a>
+                    </dd>
+                </dl>
+            </div>
+            <div id="c" class="sub_content none">
+                <dl>
+                    <dt>
+                        <a href="#">冰箱<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">格力</a>
+                        <a href="#">海尔</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">空调<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">美的</a>
+                        <a href="#">奥克斯</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+
+**main.css**
+```css
+.wrap{
+    /* 为什么要相对定位 */
+    position: relative;
+    width: 200px;
+    left: 50px;
+    top: 50px;
+    background-color: darkgray;
+}
+ul{
+    list-style: none;
+    margin: 9px;
+    padding:  0;
+    color: #ffffff;
+    background: #6c6669;
+}
+li{
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 12px;
+    cursor: pointer;
+    position: relative;
+}
+li:hover{
+    color: red;
+    /* 把li背景颜色变化放到这里会不会影响到后面子菜单的显示? */
+    background: #d8ced1;
+}
+.none{
+    display: none;
+}
+#subMenu{
+    position: absolute;
+    left: 200px;
+    top: 0;
+    width: 600px;
+    
+    border: 1px solid #f7f7f7;
+    background: #f7f7f7;
+    
+    padding-left: 15px;
+}
+
+dt a:hover{
+    color: red;
+}
+.sub_content a{
+    font-size: 14px;
+    color: #666;
+}
+.sub_content dt{
+    position: relative;
+    float: left;
+    clear: left;
+    width: 70px;
+
+    font-weight: bold;
+}
+.sub_content dd{
+    position: relative;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #eee;
+}
+.sub_content dt i{
+    width: 4px ;
+    height: 14px;
+
+    font: 400 9px/14px consolas;
+    right: 5px;
+    top:5px;
+}
+```
+
+
+**mian.js**
+
+```js
+$(document).ready(function () {
+    /*
+        1.鼠标进入主菜单中,子菜单div取消none属性,显示哪一个子菜单再进行判断
+        2.activeRow >> 选中的li  activeMenu >> activeRow所对应的子菜单
+        3.如果activeRow为空,即没有对应选中的li,弹出对应的activeMenu
+        4.如果鼠标移开给子菜单增加none属性
+        5.增加setTimeout方法,避免子菜单频繁切换
+    */
+
+    var sub = $('#subMenu')
+    var activeRow =null;
+    var activeMenu;
+
+    // 判断鼠标是否进入子菜单
+    var mouseInSub = false;
+
+
+    sub.on('mouseenter',function (e) {
+        mouseInSub=true;
+    }).on('mouseleave',function (e) {
+        mouseInSub = false;
+      })
+    
+
+    // 为什么这里要用$('#all')而不是$('#dul')?
+    // 因为mouseenter和mouseleave在all的子元素下也会被触发,即鼠标移出
+    // all下的subMenu也可以触发mouseleave事件.用$('#all')更方便,不需要再为子菜单写事件.
+    $('#all').on('mouseenter',function (e) {
+        sub.removeClass('none');
+      }).on('mouseenter','li',function (e) {
+          if (!activeRow) {
+              activeRow = $(e.target);
+              activeMenu = $('#'+activeRow.data('id'));
+              activeMenu.removeClass('none');
+              return;   //为什么在这里就return了???
+          }
+
+            // 计时器
+            var timer = setTimeout(() => {
+                if (mouseInSub) {
+                    return;
+                }
+
+                activeMenu.addClass('none');
+                activeRow = $(e.target);
+                activeMenu = $('#'+activeRow.data('id'));
+                activeMenu.removeClass('none');
+                
+            }, 200);
+
+
+
+        }).on('mouseleave',function (e) {
+            sub.addClass('none');
+
+            if (activeRow) {
+                activeMenu.addClass('none');
+                activeMenu = null;
+                activeRow = null;
+            }
+          })
+
+
+});
+```
+
+
 [1]:https://www.imooc.com/learn/829
