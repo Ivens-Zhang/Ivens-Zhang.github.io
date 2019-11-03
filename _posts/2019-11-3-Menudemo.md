@@ -178,6 +178,75 @@ dt a:hover{
 }
 ```
 
+JS文件(重点):
+1.为鼠标进入离开主菜单增加事件
+```js
+// 为什么操作$('#all')而不是$('#dul')?
+// 因为mouseenter和mouseleave在all的子元素下也会被触发,
+// 即鼠标移出all下的subMenu也可以触发mouseleave事件.用$('#all')更方便,不需要再为子菜单写事件.
+$('#all').on('mouseenter',function (e) {
+        sub.removeClass('none');
+      }).on('mouseenter','li',function (e) {
+          if (!activeRow) {
+            //   判断主菜单是否有选中行,如果没有则显示现在对应的子菜单.
+              activeRow = $(e.target);
+              activeMenu = $('#'+activeRow.data('id'));
+              activeMenu.removeClass('none');
+              return;  
+          }
+            //如果已经有选中行了,则释放选中行,重新选中现在的行,显示它的子菜单   
+                activeMenu.addClass('none');
+                activeRow = $(e.target);
+                activeMenu = $('#'+activeRow.data('id'));
+                activeMenu.removeClass('none');
+        }).on('mouseleave',function (e) {
+            // 鼠标离开菜单,让子菜单隐藏
+            sub.addClass('none');
+
+            // 如果有选中行,则释放选中行
+            if (activeRow) {
+                activeMenu.addClass('none');
+                activeMenu = null;
+                activeRow = null;
+            }
+          })
+```
+
+2.上文代码的缺点:
+- 用户鼠标选中主菜单要挪到子菜单必须水平移动不能碰到其他选项,十分不人性
+
+改进方法:增加`setTimeout`函数.将原先切换选中行代码放到延迟函数中.
+
+增加变量`mouseInSub`,判断鼠标是否进入子菜单.
+
+```js
+var mouseInSub = false;
+
+
+    sub.on('mouseenter',function (e) {
+        mouseInSub=true;
+    }).on('mouseleave',function (e) {
+        mouseInSub = false;
+      })
+
+...
+
+// 计时器
+            var timer = setTimeout(() => {
+                if (mouseInSub) {
+                    // 如果鼠标直接从主菜单进入子菜单,则结束延迟函数不再切换其他子菜单
+                    return;
+                }
+
+                activeMenu.addClass('none');
+                activeRow = $(e.target);
+                activeMenu = $('#'+activeRow.data('id'));
+                activeMenu.removeClass('none');
+                
+            }, 200);
+```
+
+
 
 
 
