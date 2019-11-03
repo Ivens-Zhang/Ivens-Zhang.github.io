@@ -54,13 +54,13 @@ tags:
 HTML文件:
 
 **1.先定义一个大div包括所有元素,`id="all"`**
-```js
+```html
 <div class="wrap" id="all">
 
 </div>
 ```
 **2.创建主菜单div,选用`ul`无序序列放置主菜单选项**
-```js
+```html
 <div id="dul">
     <ul>
         <!--注意这个data-id,这个是用来在js文件中找到对应子菜单用的-->
@@ -74,8 +74,8 @@ HTML文件:
 </div>
 ```
 **3.创建子菜单div,选用`dl`存放子菜单选项**
-```js
-// 注意这里的子菜单div和具体的abcd菜单的div,他们都具有none属性,这样方便后面js中控制他们是否显示
+```html
+<!-- 注意这里的子菜单div和具体的abcd菜单的div,他们都具有none属性,这样方便后面js中控制他们是否显示 -->
 <div class="none" id="subMenu">
             <div id="a" class="sub_content none">
                 <dl>
