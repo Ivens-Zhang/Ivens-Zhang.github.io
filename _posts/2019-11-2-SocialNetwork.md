@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "走向孤独"
-subtitle: '————电影<社交网络>观后感'
+subtitle: '————电影《社交网络》观后感'
 author: "Ivens"
 header-mask: 0.2
 header-img: "img/in-post/2019-11-3/th.jpg"
