@@ -1,21 +1,30 @@
 ---
 layout: post
-title: "Promise学习笔记（一）"
+title: "Promise学习笔记"
 subtitle: ''
 author: "Ivens"
 header-mask: 0.1
 header-img: "img/in-post/2019-11-14/th.jpg"
-hidden: true
 tags:
   - 前端学习笔记
 ---
+<br>
+<br>
+
 - [前言](#%e5%89%8d%e8%a8%80)
   - [什么是并行与并发?](#%e4%bb%80%e4%b9%88%e6%98%af%e5%b9%b6%e8%a1%8c%e4%b8%8e%e5%b9%b6%e5%8f%91)
   - [既然JS是单线程的，那是如何完成所谓的并行任务的呢?](#%e6%97%a2%e7%84%b6js%e6%98%af%e5%8d%95%e7%ba%bf%e7%a8%8b%e7%9a%84%e9%82%a3%e6%98%af%e5%a6%82%e4%bd%95%e5%ae%8c%e6%88%90%e6%89%80%e8%b0%93%e7%9a%84%e5%b9%b6%e8%a1%8c%e4%bb%bb%e5%8a%a1%e7%9a%84%e5%91%a2)
 - [正文](#%e6%ad%a3%e6%96%87)
+  - [总结](#%e6%80%bb%e7%bb%93)
   - [Promise是用来解决什么问题的?](#promise%e6%98%af%e7%94%a8%e6%9d%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98%e7%9a%84)
   - [有没有更好的写法？](#%e6%9c%89%e6%b2%a1%e6%9c%89%e6%9b%b4%e5%a5%bd%e7%9a%84%e5%86%99%e6%b3%95)
   - [没有方法再次改进代码?](#%e6%b2%a1%e6%9c%89%e6%96%b9%e6%b3%95%e5%86%8d%e6%ac%a1%e6%94%b9%e8%bf%9b%e4%bb%a3%e7%a0%81)
+  - [Promise方法](#promise%e6%96%b9%e6%b3%95)
+    - [Promise.prototype.then()](#promiseprototypethen)
+    - [Promise.prototype.catch()](#promiseprototypecatch)
+    - [Promise.all()](#promiseall)
+    - [Promise.race()](#promiserace)
+    - [Promise.resolve()与Promise.reject()](#promiseresolve%e4%b8%8epromisereject)
 
 ## 前言
 
@@ -48,7 +57,14 @@ JS引擎是单线程的，但是浏览器是多线程的，其执行的方法如
 
 ## 正文
 
-先分一篇不错的笔记—— **[《Promise笔记》](https://segmentfault.com/a/1190000011652907)**
+### 总结
+先初始化 `Promise`对象在里面设置方法,判断何时`resolve()`何时`reject()`.
+
+然后写`then()`方法,设置如果`resolve()`该运行什么;再写`catch()`方法,设置如果`reject()`该执行什么.
+
+如果是`resolve()`则返回一个新的`Promise`对象,可以继续使用`then()`或者`catch()`.
+
+分享一篇不错的笔记—— **[《Promise笔记》](https://segmentfault.com/a/1190000011652907)**
 
 ### Promise是用来解决什么问题的?
 
@@ -118,9 +134,226 @@ new Promise(
 如果异步操作**成功**，则可以调用`resolve()`来将该实例的状态置为`fulfilled`，即已完成的，如果一旦**失败**，可以调用`reject()`来将该实例的状态置为`rejected`，即失败的。
 
 Promise对象有三种状态：
-1. pending<br>
+1. `pending`<br>
 初始状态,也称为未定状态，就是初始化Promise时，调用executor执行器函数后的状态。
-1. fulfilled<br>
+1. `fulfilled`<br>
 完成状态，意味着异步操作成功。
-3. rejected<br>
+3. `rejected`<br>
 失败状态，意味着异步操作失败。
+
+它只有两种状态可以转化，即:
+- 操作成功<br>
+`pending -> fulfilled`
+- 操作失败<br>
+`pending -> rejected`
+
+并且这个状态转化是`单向的`，不可逆转，已经确定的状态（fulfilled/rejected）无法转回初始状态（pending）。
+
+![](../../../../img/in-post/2019-11-14/e.png)
+
+***
+
+### Promise方法
+#### Promise.prototype.then()
+`then()`调用后返回一个Promise对象，意味着实例化后的Promise对象可以进行链式调用，而且这个then()方法可以接收两个函数，一个是处理成功后的函数，一个是处理错误结果的函数。
+```js
+promise1.then(function(data) {
+  console.log(data); // success
+}, function(err) {
+  console.log(err); // 不执行
+//   这里第二个function就相当于catc()
+})
+```
+
+```js
+var promise1 = new Promise(function(resolve, reject) {
+  // 2秒后置为接收状态
+  setTimeout(function() {
+    resolve('success');
+  }, 2000);
+});
+
+promise1.then(function(data) {
+  console.log(data); // success
+}, function(err) {
+  console.log(err); // 不执行
+}).then(function(data) {
+  // 上一步的then()方法没有返回值
+  console.log('链式调用：' + data); // 链式调用：undefined 
+}).then(function(data) {
+  // ....
+});
+```
+*返回的这个Promise对象的状态主要是根据promise1.then()方法返回的值，大致分为以下几种情况：*
+
+- 如果then()方法调用`resolve()`方法，那么返回的Promise将会变成接收状态。
+- 如果then()方法调用`reject()`方法，那么返回的Promise将会变成拒绝状态。
+- 如果then()方法中返回了`一个参数值`，那么返回的Promise将会变成接收状态。
+- 如果then()方法中抛出了`一个异常`，那么返回的Promise将会变成拒绝状态。
+- 如果then()方法返回了`一个未知状态(pending)的Promise新实例`()，那么返回的新Promise就是未知状态。
+- 如果then()方法`没有明确指定`的resolve(data)/reject(data)/return data时，那么返回的新Promise就是接收状态，可以一层一层地往下传递。
+
+```js
+var promise2 = new Promise(function(resolve, reject) {
+  // 2秒后置为接收状态
+  setTimeout(function() {
+    resolve('success');
+  }, 2000);
+});
+
+promise2
+  .then(function(data) {
+    // 上一个then()调用了resolve，置为fulfilled态
+    console.log('第一个then');
+    console.log(data);
+    return '2';
+  })
+  .then(function(data) {
+    // 此时这里的状态也是fulfilled, 因为上一步返回了2
+    console.log('第二个then');
+    console.log(data);  // 2
+
+    return new Promise(function(resolve, reject) {
+      reject('把状态置为rejected error'); // 返回一个rejected的Promise实例
+    });
+  }, function(err) {
+    // error
+  })
+  .then(function(data) {
+    /* 这里不运行 */
+    console.log('第三个then');
+    console.log(data);
+    // ....
+  }, function(err) {
+    // error回调
+    // 此时这里的状态也是fulfilled, 因为上一步使用了reject()来返回值
+    console.log('出错：' + err); // 出错：把状态置为rejected error
+  })
+  .then(function(data) {
+    // 没有明确指定返回值，默认返回fulfilled
+    console.log('这里是fulfilled态');
+});
+```
+
+#### Promise.prototype.catch()
+`catch()`方法和`then()`方法一样，都会**返回一个新的Promise对象**，它主要用于捕获异步操作时出现的异常。因此，我们通常省略then()方法的第二个参数，把错误处理控制权转交给其后面的catch()函数.
+
+#### Promise.all()
+Promise.all()接收一个参数，它必须是可以迭代的，比如数组。它的状态受参数内各个值的状态影响，即里面状态全部为fulfilled时，它才会变成fulfilled，否则变成rejected。这就好比一个`&&`,也像一个过滤器,参数里必须完全正确才能运行后面的`then()`方法.
+
+```js
+// 置为fulfilled状态的情况
+var arr = [1, 2, 3];
+var promises = arr.map(function(e) {
+  return new Promise(function(resolve, reject) {
+    resolve(e * 5);
+  });
+});
+
+Promise.all(promises).then(function(data) {
+    // 有序输出
+  console.log(data); // [5, 10, 15]
+  console.log(arr); // [1, 2, 3]
+});
+
+
+// 置为rejected状态的情况
+var promises2 = arr.map(function(e) {
+  return new Promise(function(resolve, reject) {
+    if (e === 3) {
+      reject('rejected');
+    }
+    resolve(e * 5);
+  });
+});
+
+Promise.all(promises2).then(function(data) {
+  // 这里不会执行
+  console.log(data);
+  console.log(arr);
+}).catch(function(err) {
+  console.log(err); // rejected
+});
+```
+#### Promise.race()
+
+Promise.race()和Promise.all()类似，都接收一个可以迭代的参数，但是不同之处是Promise.race()的状态变化不是全部受参数内的状态影响，一旦参数内有一个值的状态发生的改变，那么该Promise的状态就是改变的状态。就跟race单词的字面意思一样，谁跑的快谁赢。
+
+```js
+var p1 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 300, 'p1 doned');
+});
+
+var p2 = new Promise(function(resolve, reject) {
+  setTimeout(resolve, 50, 'p2 doned');
+});
+
+var p3 = new Promise(function(resolve, reject) {
+  setTimeout(reject, 100, 'p3 rejected');
+});
+
+Promise.race([p1, p2, p3]).then(function(data) {
+  // 显然p2更快，所以状态变成了fulfilled
+  // 如果p3更快，那么状态就会变成rejected
+  console.log(data); // p2 doned
+}).catch(function(err) {
+  console.log(err); // 不执行
+});
+```
+
+#### Promise.resolve()与Promise.reject()
+
+
+```js
+// 参数为普通值
+var p4 = Promise.resolve(5);
+p4.then(function(data) {
+  console.log(data); // 5
+});
+
+
+// 参数为含有then()方法的对象
+var obj = {
+  then: function() {
+    console.log('obj 里面的then()方法');
+  }
+};
+
+var p5 = Promise.resolve(obj);
+p5.then(function(data) {
+  // 这里的值时obj方法里面返回的值
+  console.log(data); // obj 里面的then()方法
+});
+
+
+// 参数为Promise实例
+var p6 = Promise.resolve(7);
+var p7 = Promise.resolve(p6);
+
+p7.then(function(data) {
+  // 这里的值时Promise实例返回的值
+  console.log(data); // 7
+});
+
+// 参数为Promise实例,但参数是rejected态
+var p8 = Promise.reject(8);
+var p9 = Promise.resolve(p8);
+
+p9.then(function(data) {
+  // 这里的值时Promise实例返回的值
+  console.log('fulfilled:'+ data); // 不执行
+}).catch(function(err) {
+  console.log('rejected:' + err); // rejected: 8
+});
+
+var p10 = Promise.reject('手动拒绝');
+p10.then(function(data) {
+  console.log(data); // 这里不会执行，因为是rejected态
+}).catch(function(err) {
+  console.log(err); // 手动拒绝
+}).then(function(data) {
+ // 不受上一级影响
+  console.log('状态：fulfilled'); // 状态：fulfilled
+});
+```
+  `
