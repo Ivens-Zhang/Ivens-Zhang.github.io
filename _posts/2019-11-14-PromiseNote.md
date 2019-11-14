@@ -64,7 +64,7 @@ JS引擎是单线程的，但是浏览器是多线程的，其执行的方法如
 
 如果是`resolve()`则返回一个新的`Promise`对象,可以继续使用`then()`或者`catch()`.
 
-分享几篇不错的教程：
+**另外，分享几篇不错的教程：**
 
  **[《Promise笔记》](https://segmentfault.com/a/1190000011652907)**
 
@@ -75,6 +75,7 @@ JS引擎是单线程的，但是浏览器是多线程的，其执行的方法如
 [《ECMAScript 6 —— Promise》](http://es6.ruanyifeng.com/#docs/promise)
 
 [《简书——Promise笔记（很全）》](https://www.jianshu.com/p/1b63a13c2701)
+
 ***
 
 ### Promise是用来解决什么问题的?
@@ -313,7 +314,7 @@ Promise.race([p1, p2, p3]).then(function(data) {
 ```
 
 #### Promise.resolve()与Promise.reject()
-
+Promise.resolve()接受一个参数值，可以是普通的值，具有then()方法的对象和Promise实例。正常情况下，它返回一个Promise对象，状态为fulfilled。但是，当解析时发生错误时，返回的Promise对象将会置为rejected态。Promise.reject()和Promise.resolve()正好相反，它接收一个参数值reason，即发生异常的原因。此时返回的Promise对象将会置为rejected态。
 
 ```js
 // 参数为普通值
