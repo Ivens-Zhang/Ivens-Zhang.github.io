@@ -64,7 +64,16 @@ JS引擎是单线程的，但是浏览器是多线程的，其执行的方法如
 
 如果是`resolve()`则返回一个新的`Promise`对象,可以继续使用`then()`或者`catch()`.
 
-分享一篇不错的笔记—— **[《Promise笔记》](https://segmentfault.com/a/1190000011652907)**
+分享几篇不错的教程：
+
+ **[《Promise笔记》](https://segmentfault.com/a/1190000011652907)**
+
+[《MDN文档——Promise》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+[《廖雪峰JavaScript教程》](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544#0)
+
+[《ECMAScript 6 —— Promise》](http://es6.ruanyifeng.com/#docs/promise)
+***
 
 ### Promise是用来解决什么问题的?
 
