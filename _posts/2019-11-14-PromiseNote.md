@@ -368,4 +368,3 @@ p10.then(function(data) {
   console.log('状态：fulfilled'); // 状态：fulfilled
 });
 ```
-  `
