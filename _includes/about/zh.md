@@ -48,6 +48,8 @@
 
 后面我会专门以这个项目为模板，写一篇博文，分享一下如何利用[GitHub Pages][2]和[Jekyll][3]搭建个人博客，以及中间的可能遇到的问题。
 
+这篇教程是我目前看到过的最为详细的文章了—— [《利用 GitHub Pages 快速搭建个人博客》](https://www.jianshu.com/p/e68fba58f75c).
+
 [1]:https://github.com/huxpro/huxpro.github.io/
 [2]:https://pages.github.com/
 [3]:http://jekyllcn.com/
