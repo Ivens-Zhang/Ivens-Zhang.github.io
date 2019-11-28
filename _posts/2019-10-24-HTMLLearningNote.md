@@ -5,6 +5,7 @@ subtitle: ''
 author: "Ivens"
 header-mask: 0.2
 header-img: "img/in-post/2019-10-24/th.jpg"
+catalog: true
 hidden: true
 tags:
   - 前端学习笔记
