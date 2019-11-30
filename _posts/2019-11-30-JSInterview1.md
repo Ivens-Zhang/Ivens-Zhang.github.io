@@ -4,7 +4,7 @@ title: "JavaScript 基础面试题(一)"
 subtitle: ''
 author: "Ivens"
 header-mask: 0.1
-header-img: "img/in-post/2019-11-30/th2.jpg"
+header-img: "img/in-post/2019-11-30/th.jpg"
 hidden: true
 catalog: true
 tags:
@@ -30,4 +30,7 @@ tags:
 
 本来现在还在按照计划学习 `Vue` 框架, 正准备开始做去哪儿仿站. 现在我不得不改变一下计划, 把原本准备放在最后的基础知识拿到现在来看.
 
-现在做的这些努力也只是为了弥补大学前两年的荒废, 一句话安慰自己 "尽人事,听天命".
+现在做的这些努力也只是为了弥补大学前两年的荒废, 用一句话安慰自己 "尽人事,听天命".
+
+## 正文
+
