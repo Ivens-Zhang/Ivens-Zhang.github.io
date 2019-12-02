@@ -274,7 +274,9 @@ F2(f1);     //此时输出的还是 100, 因为定义时的作用域中 a = 100.
 两种情况会出现变量提升:
 1. 变量的定义
 2. 函数的声明（注意和函数表达式的区别）
+
 #### 说明this几种不同的使用场景
+
 ```js
 // 作为构造函数执行
 function Foo(name) {
@@ -372,3 +374,20 @@ firstLoad(001)    //false
 firstLoad(002)    //true
 // 这样在 isFirstLoad 外, 根本不可能修改 _list 的值.
 ```
+
+### 异步和单线程
+使用异步的场景:
+- 定时任务: `setTimeout` , `setInverval`
+- 网络请求: `ajax` 请求, 动态 `<img>`加载
+- 事件绑定
+
+```js
+// 事件绑定
+console.log('start');
+document.getElementById('btn1').addEventListener('click', function () {
+  alert('click');
+})
+console.log('end');
+// 事件绑定需要使用异步, 因为不可能你不触发这个事件其他代码就 不执行了.
+```
+
