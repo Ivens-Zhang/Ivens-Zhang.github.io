@@ -391,3 +391,160 @@ console.log('end');
 // 事件绑定需要使用异步, 因为不可能你不触发这个事件其他代码就 不执行了.
 ```
 
+#### 同步与异步的区别
+- 同步会阻塞代码执行, 异步不会
+
+#### `setTimeout` 笔试题
+```js
+console.log(1);
+
+setTimeout(function () {
+  // setTimeout 不管延迟多少时间都会被暂存起来, 知道其他执行结束后拿出来执行.
+	console.log(2);
+},0);
+
+console.log(3);
+
+setTimeout(function () {
+	console.log(4);
+},1000);
+
+console.log(5);
+```
+输出结果为:
+```
+1 3 5 2 4
+```
+
+### 其他知识
+#### 知识点
+- 日期
+
+```js
+Date.now();       //获取当前日期毫秒数
+var dt = new Date();
+dt.getTime();     //获取毫秒数
+dt.getFullYear();
+dt.getMonth();    //月 (0-11)
+dt.getDate();     //日 (0-31)
+dt.getHours();    //小时 (0-23)
+dt.getMinutes();  //分 (0-59)
+dt.getSeconds();  //秒 (0-59)
+```
+- Math
+  - 获取随机数 Math.random()
+- 数组 API
+  - forEach 遍历所有元素
+
+```js
+var arr = [1,2,3];
+arr.forEach(function (item,index) {
+  // 遍历数组所有元素
+  console.log(index, item);
+})
+```
+  - every 判断所有元素是否都符合条件
+
+```js
+var arr = [1,2,3];
+var result = arr.every(function (item, index) {
+  if (item < 4) {
+    return true;
+  }
+})
+console.log(result);
+```
+  - some 判断是否至少有一个符合
+  - sort 排序
+
+```js
+var arr = [1,2,5,4,3];
+var arr2 = arr.sort(function(a, b) {
+  // 从小到大
+  return a - b;
+  // 从大到小
+  return b - a;
+})
+console.log(arr2);
+```
+  - map 对元素重新组装, 生成新数组
+
+```js
+var arr = [1,2,3,4];
+var arr2 = arr.map(function(item, index) {
+  // 将元素重新组装, 并返回
+  return item + 1;
+})
+console.log(arr2);
+```
+  - filter 过滤符合条件的元素
+
+```js
+var arr = [1,2,3];
+var arr2 = arr.filter(function (item, index) {
+  // 需要什么数, 则令他返回 true
+  if (item > 2) {
+    return true;
+  }
+})
+console.log(arr2);
+```
+- 对象 API
+
+```js
+var obj = {
+  x: 100,
+  y: 200
+}
+for (var key in obj) {
+  console.log(key, obj[key]);
+}
+// 输出: x 100   y 200
+```
+
+#### 获取 2017-06-10 格式的日期
+```js
+function formatDate(dt) {
+  if (!dt) {
+    dt = new Date();
+  }
+  var year = dt.getFullYear();
+  var month = dt.getMonth();
+  var date = dt. getDate();
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (date < 10) {
+    date = '0' + date;
+  }
+  return year + '-' + month + '-' + date;
+}
+var dt = new Date();
+var formatDate = formatDate(dt);
+console.log(formatDate);
+
+```
+#### 获取随机数, 要求长度一致的字符串格式
+```js
+// 使随机数长度都为 3
+var random = Math.random();
+random = random + '000';    //在数字末尾加 3 个零
+random = random.slice(0, 3);
+console.log(random);
+```
+先给随机数添加末尾是为了避免长度不够的情况.
+#### 写一个能遍历对象和数组的通用 forEach 函数
+```js
+function forEachDemo(obj) {
+  if (obj instanceof Array) {
+    obj.forEach(function (item, index) {
+      console.log(index, item);
+    })
+  } else if (obj instanceof Object) {
+    for (var key in obj) {
+      console.log(key, obj[key]);
+    }
+  }
+}
+
+```
