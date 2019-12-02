@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript 基础面试题——基础上"
+title: "JavaScript 基础面试题——基础"
 subtitle: ""
 author: "Ivens"
 header-mask: 0.1
@@ -10,29 +10,6 @@ catalog: true
 tags:
   - 前端学习笔记
 ---
-
-- [前言](#%e5%89%8d%e8%a8%80)
-- [正文](#%e6%ad%a3%e6%96%87)
-  - [重点知识点](#%e9%87%8d%e7%82%b9%e7%9f%a5%e8%af%86%e7%82%b9)
-  - [变量类型和计算](#%e5%8f%98%e9%87%8f%e7%b1%bb%e5%9e%8b%e5%92%8c%e8%ae%a1%e7%ae%97)
-    - [知识点](#%e7%9f%a5%e8%af%86%e7%82%b9)
-    - [JS 中使用 typeof 能得到哪些类型?](#js-%e4%b8%ad%e4%bd%bf%e7%94%a8-typeof-%e8%83%bd%e5%be%97%e5%88%b0%e5%93%aa%e4%ba%9b%e7%b1%bb%e5%9e%8b)
-    - [何时使用 === 何时使用 ==](#%e4%bd%95%e6%97%b6%e4%bd%bf%e7%94%a8--%e4%bd%95%e6%97%b6%e4%bd%bf%e7%94%a8)
-    - [JS 中有哪些内置函数?](#js-%e4%b8%ad%e6%9c%89%e5%93%aa%e4%ba%9b%e5%86%85%e7%bd%ae%e5%87%bd%e6%95%b0)
-    - [JS 变量按照存储方式区分为哪些类型, 并描述特点](#js-%e5%8f%98%e9%87%8f%e6%8c%89%e7%85%a7%e5%ad%98%e5%82%a8%e6%96%b9%e5%bc%8f%e5%8c%ba%e5%88%86%e4%b8%ba%e5%93%aa%e4%ba%9b%e7%b1%bb%e5%9e%8b-%e5%b9%b6%e6%8f%8f%e8%bf%b0%e7%89%b9%e7%82%b9)
-    - [如何理解 JSON ?](#%e5%a6%82%e4%bd%95%e7%90%86%e8%a7%a3-json)
-  - [原型和原型链](#%e5%8e%9f%e5%9e%8b%e5%92%8c%e5%8e%9f%e5%9e%8b%e9%93%be)
-    - [知识点](#%e7%9f%a5%e8%af%86%e7%82%b9-1)
-    - [如何准确判断一个变量是不是数组类型?](#%e5%a6%82%e4%bd%95%e5%87%86%e7%a1%ae%e5%88%a4%e6%96%ad%e4%b8%80%e4%b8%aa%e5%8f%98%e9%87%8f%e6%98%af%e4%b8%8d%e6%98%af%e6%95%b0%e7%bb%84%e7%b1%bb%e5%9e%8b)
-    - [写出一个原型链继承的例子](#%e5%86%99%e5%87%ba%e4%b8%80%e4%b8%aa%e5%8e%9f%e5%9e%8b%e9%93%be%e7%bb%a7%e6%89%bf%e7%9a%84%e4%be%8b%e5%ad%90)
-    - [描述 new 一个对象的过程](#%e6%8f%8f%e8%bf%b0-new-%e4%b8%80%e4%b8%aa%e5%af%b9%e8%b1%a1%e7%9a%84%e8%bf%87%e7%a8%8b)
-  - [作用域和闭包](#%e4%bd%9c%e7%94%a8%e5%9f%9f%e5%92%8c%e9%97%ad%e5%8c%85)
-    - [知识点](#%e7%9f%a5%e8%af%86%e7%82%b9-2)
-    - [说一下变量提升的理解](#%e8%af%b4%e4%b8%80%e4%b8%8b%e5%8f%98%e9%87%8f%e6%8f%90%e5%8d%87%e7%9a%84%e7%90%86%e8%a7%a3)
-    - [说明this几种不同的使用场景](#%e8%af%b4%e6%98%8ethis%e5%87%a0%e7%a7%8d%e4%b8%8d%e5%90%8c%e7%9a%84%e4%bd%bf%e7%94%a8%e5%9c%ba%e6%99%af)
-    - [创建10个`<a>`标签, 点击的时候弹出来对应的序号](#%e5%88%9b%e5%bb%ba10%e4%b8%aaa%e6%a0%87%e7%ad%be-%e7%82%b9%e5%87%bb%e7%9a%84%e6%97%b6%e5%80%99%e5%bc%b9%e5%87%ba%e6%9d%a5%e5%af%b9%e5%ba%94%e7%9a%84%e5%ba%8f%e5%8f%b7)
-    - [如何理解作用域](#%e5%a6%82%e4%bd%95%e7%90%86%e8%a7%a3%e4%bd%9c%e7%94%a8%e5%9f%9f)
-    - [实际开发中闭包的应用](#%e5%ae%9e%e9%99%85%e5%bc%80%e5%8f%91%e4%b8%ad%e9%97%ad%e5%8c%85%e7%9a%84%e5%ba%94%e7%94%a8)
 
 ## 前言
 
@@ -245,13 +222,149 @@ var fn1 = a.fn;
 fn1();      //输出为: undefined, 此时 this 为 window
 ```
 - 作用域
+  - JavaScript 中没有块级作用域, 只有`函数`和`全局`作用域
 - 作用域链
+
+在当前作用域如果找不到使用的变量, 则会往上一级父作用域寻找, 如果找不到则会一直找到全局作用域.
+
+**注意：** 函数的父级作用域是函数定义时候的作用域，不是函数执行时候的作用域. 也就是说哪个作用域定义了这个函数，这个函数的父级作用域就是谁，跟函数执行没有关系，函数自由变量要到父级作用域中找，就形成了作用域链
+![](../../../../img/in-post/2019-11-30/b.png)
 - 闭包
+  - 闭包使用场景
+    - 函数作为返回值
+    - 函数作为参数传递
+```js
+// 1.函数作为返回值
+function F1(){
+  var a = 100;
+
+  // 返回一个函数
+  return function () {
+    console.log(a);
+  }
+}
+// 此时 f1 得到一个函数
+var f1 = F1();
+var a = 200;
+f1();     //注意: 此时输出值为: 100
+// 两个 a 完全不一样, 因为作用域不同. 是两个不相关的变量
+
+// 2.函数作为参数传递
+function F1(){
+  var a = 100;
+
+  // 返回一个函数
+  return function () {
+    console.log(a);
+  }
+}
+var f1 = F1();
+function F2(fn) {
+  var a = 200;
+  fn();
+}
+F2(f1);     //此时输出的还是 100, 因为定义时的作用域中 a = 100.
+```
+**函数的父级作用域是函数定义时候的作用域，不是函数执行时候的作用域.**
 
 #### 说一下变量提升的理解
+两种情况会出现变量提升:
+1. 变量的定义
+2. 函数的声明（注意和函数表达式的区别）
 #### 说明this几种不同的使用场景
+```js
+// 作为构造函数执行
+function Foo(name) {
+  this.name = name;
+}
+var f = new Foo('zhangsan');
+
+// 作为对象属性执行
+var obj = {
+  name: 'A',
+  printName: function () {
+    console.log(this.name);
+  }
+}
+obj.printName();
+
+// 作为普通函数执行
+function fn() {
+  console.log(this);
+}
+fn();     //此时 this === window
 
 
+// call apply bind
+function fncall(name,age) {
+  alert(name + age);
+  console.log(this)     //此时 this === window
+}
+fncall.call({x:100},'Tom',20);
+// 此时弹出: Tom20, 输出: {x:100}
+
+// apply 与 call 作用类似, 只不过 apply 的参数是以数组形式传进对象的.
+
+var fnbind = function (name, age) {
+  alert(name + age);
+  console.log(this)
+}.bind({y:200})
+fnbind('John',15);
+// 此时弹出: John15, 输出{y:200}
+```
 #### 创建10个`<a>`标签, 点击的时候弹出来对应的序号
+```js
+// 错误写法
+var i, a;
+for (i = 0; i < 10; i++) {
+    var a = document.createElement('a');
+    a.innerHTML = i + '<br>';
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      alert(i);
+    }
+    document.body.appendChild(a);
+}
+// 这样写确实能够创建 10 个 a 标签, 但是当你点击任何一个标签时, 弹出的结果都是 10. 因为他的向外找 i 时, i 已经全部循环完毕变成10.
+
+// 正确写法
+var i;
+for (i = 0; i < 10; i++) {
+  (function(i){
+    var a = document.createElement('a');
+    a.innerHTML = i + '<br>';
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      alert(i);
+    })
+    document.body.appendChild(a);
+  })(i)
+}
+// 在原本的方法外包裹一层 function, 将 i 传入, 这样就可以避免上面的问题.
+```
 #### 如何理解作用域
+1. 自由变量
+2. 作用域链, 即自由变量的查找
+3. 闭包的两个场景
 #### 实际开发中闭包的应用
+闭包实际应用主要用于封装变量, 收敛权限
+```js
+function isFirstLoad() {
+  var _list = [];
+  return function (user_id) {
+    if (_list.indexOf(user_id) >= 0) {
+      return false;
+    } else {
+      _list.push(user.id);
+      return true;
+    }
+  }
+}
+
+//使用
+var firstLoad = isFirstLoad();
+firstLoad(001)    //true 
+firstLoad(001)    //false
+firstLoad(002)    //true
+// 这样在 isFirstLoad 外, 根本不可能修改 _list 的值.
+```
