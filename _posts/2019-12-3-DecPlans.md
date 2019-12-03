@@ -79,6 +79,7 @@ tags:
 2. TypeScript
 3. Node.js
 4. 微信小程序
+5. zepto 源码阅读
 
 不足之处:
 - 日语最近有些淡忘
