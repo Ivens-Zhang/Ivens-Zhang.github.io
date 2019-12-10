@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Typescript 学习笔记 (一)"
+title: "Typescript 学习笔记————基础"
 subtitle: ""
 author: "Ivens"
 header-mask: 0.1
@@ -18,7 +18,7 @@ tags:
 
 总结: ES6 的 let 让 js 真正拥有了块级作用域，也是向这更安全更规范的路走，虽然加了很多约束，但是都是为了更安全的使用。
 
-详细可参考 --- [<ES6-let和const命令>](http://es6.ruanyifeng.com/#docs/let#let-%E5%91%BD%E4%BB%A4).
+详细可参考 --- [《ES6-let和const命令》](http://es6.ruanyifeng.com/#docs/let#let-%E5%91%BD%E4%BB%A4).
 
 ## 简介
 ### 什么是 TypeScript ?
@@ -44,6 +44,8 @@ tsc hello.ts
 ```
 
 ## 基础
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191210161237.png)
+
 ### 原始数据类型
 JavaScript 的类型分为两种：`原始数据类型（Primitive data types）`和`对象类型（Object types）`。
 
@@ -248,3 +250,50 @@ function reverse(x: number | string): number | string {
     }
 }
 ```
+
+### 类型断言
+
+当 `TypeScript` 不确定一个`联合类型`的变量到底是哪个类型的时候，我们只能访问此联合类型的所有类型里`共有`的属性或方法.
+
+```ts
+function getLength(something: string | number): number {
+    return something.length;
+}
+​
+// index.ts(2,22): error TS2339: Property 'length' does not exist on type 'string | number'.
+//   Property 'length' does not exist on type 'number'.
+```
+
+而有时候，我们确实需要在还不确定类型的时候就访问其中一个类型的属性或方法, 此时可以使用`类型断言`，在需要断言的变量前加上 `<Type>` 即可。
+
+**类型断言不是类型转换，断言成一个联合类型中不存在的类型是不允许的.**
+
+### 声明语句
+使用第三方库 jQuery，一种常见的方式是在 html 中通过 `<script>` 标签引入 jQuery，然后就可以使用全局变量 $ 或 jQuery 了。
+
+**但是在 ts 中，编译器并不知道 $ 或 jQuery 是什么东西**, 需要使用 `declare var` 来定义它的类型.
+
+```ts
+declare const jQuery: (selector: string) => any;
+jQuery('#foo');
+```
+
+通常我们会把声明语句放到一个单独的文件中，这就是声明文件, 声明文件必需以 `.d.ts` 为后缀, 如: `jQuery.d.ts`.
+
+或直接使用第三方声明文件, 推荐使用 `@types` 统一管理第三方库的声明文件。
+
+```cmd
+npm install @types/jquery --save-dev
+```
+
+### 内置对象
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191210155653.png)
+
+我们可以在 TypeScript 中将变量定义为这些类型：
+```ts
+let b: Boolean = new Boolean(1);
+let e: Error = new Error('Error occurred');
+let d: Date = new Date();
+let r: RegExp = /[a-z]/;
+```
+
