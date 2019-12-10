@@ -16,7 +16,7 @@ tags:
 - 不允许重复声明
 - 为 JS 新增了块级作用域
 
-总结: ES6 的 let 让 js 真正拥有了块级作用域，也是向这更安全更规范的路走，虽然加了很多约束，但是都是为了更安全的使用。
+**总结: ES6 的 let 让 js 真正拥有了块级作用域，也是向这更安全更规范的路走，虽然加了很多约束，但是都是为了更安全的使用。**
 
 详细可参考 --- [《ES6-let和const命令》](http://es6.ruanyifeng.com/#docs/let#let-%E5%91%BD%E4%BB%A4).
 
@@ -110,6 +110,8 @@ let num: number = u;
 
 // Type 'void' is not assignable to type 'number'.
 ```
+
+***
 
 ### 任意值
 在 TypeScript 中, 是不允许在赋值过程中改变类型的.
