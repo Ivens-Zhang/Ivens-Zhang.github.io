@@ -21,49 +21,44 @@ tags:
 
 第一次使用 `GitHub` + `GitHub Desktop` 完成项目, 了解了如何正确地使用代码版本控制工具. 对 `branch`, `commit`, `merge` 等指令有了初步的理解.
 
-## 正文
+**项目的组件关系结构图:**
 
-### 搭建项目
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217160336.png)
+## 搭建项目
 
-**首先是在开始搭建项目前的准备工作, 如图安装好对应版本:**
+**1. 项目前的准备工作, 如图安装好对应版本:**
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217163927.png)
 
-**其次, 在 `cmd` 中输入 `vue ui` 使用网页端创建 `vue` 项目:**
+**2. 在 `cmd` 中输入 `vue ui` 使用网页端创建 `vue` 项目:**
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217164250.png)
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/未命名_meitu_0.jpg)
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217164329.png)
+**3. 打开 `GitHub Desktop`, 左上角菜单栏中 `File >> Create a new repository`, 选择项目所在目录即可.**
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217164403.png)
-
-**最后, 打开 `GitHub Desktop`, 左上角菜单栏中 `File >> Create a new repository`.**
-
-到这里, 去哪儿APP项目的初步搭建完成.
+到这里, 我们的项目初步搭建就完成了.
 
 ### 项目结构
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217174843.png)
 
-上图是我们刚刚创建好的项目的结构, 说一些我的理解:
-- 因为`vue-cli`版本的变化, 不同的版本创建出的项目结构也会不同, 百度一下这个文件夹起什么用很有意义.
-- 在我这个版本中没有`config`文件夹, 一些配置文件需要自己在`src`目录下创建`vue.config.js`文件.
-
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217180643.png)
 
+**上图是我们刚刚创建好的项目的结构, 说一些我的理解:**
+- 因为`vue-cli`版本的变化, 不同的版本创建出的项目结构也会不同, 百度一下各个文件夹的作用很有意义.
+- 在我这个版本中没有`config`文件夹, 如果要配置一些参数需要自己在`src`目录下创建`vue.config.js`文件.
+
+***
 
 ### 初始化项目
-按照下图的思路, 为我们的项目新增一些文件和文件夹.
+**这是项目中需要用到依赖于第三方库:**
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217160336.png)
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191220211241.png)
 
+**首先, 为项目添加一些提前准备好的文件:**
 1. `mock` 文件夹以及三个 json 文件
 2. `styles` 文件夹以及两个 css 文件
-3. `views` 文件夹中新建三个对应不同组件的文件夹
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217204359.png)
-
-### 添加引用
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191217210312.png)
+**其次, 我们引入文件:**
 
 1.第三方 `css` 库文件添加
 
@@ -102,14 +97,14 @@ minimum-scale=1.0,maximum-scale=1.0,user-scalable=no
 ```
 
 ***
-这样项目中要使用到的第三方库就全部安装导入完成.
+
 
 ### `Home` 组件实现
-目标效果:
+**目标效果:**
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191218110944.png)
 
-所以我们把 `Home` 页面拆分为以下几个部分, 并分别创建各子组件.
+**组件结构:**
 
 ```cmd
 F:.
@@ -123,9 +118,8 @@ F:.
         Weekend.vue
 ```
 
-在 `Header.vue` 中, 我们要使用 `iconfont` 图标库.
+**`Iconfont` 的使用方法:**
 
-使用方法如下:
 1. 进入 `iconfont` 官网, 将图标添加至项目.
 2. 进入我的项目, 点击下载到本地.
 3. 在项目 `src/ assets/ styles` 中新建文件夹 `iconfont`, 将下载后解压的对应文件放入其中.
@@ -145,9 +139,68 @@ F:.
             iconfont.woff
 ```
 
-ajax 请求的实现步骤
+**ajax 请求的实现步骤:**
+1. 在 `Home.vue` 的 `script` 里添加引用 `axios`
 
-Icons 页面为什么要使用二维数组?
+```js
+import axios from 'axios'
+```
+
+2. 在 `methods` 中添加两个方法
+
+```js
+getIndex () {
+//这里请求的地址直接从 public 文件夹中寻找, 所以一开始的时候我们要把 json 文件放在里面.
+ axios.get('/mock/index.json', {
+     params: {
+       city: this.$store.state.currentCity
+     }  // 这里 get 中携带的第二个参数会在请求中携带参数, 如:
+        // http://localhost:8080/mock/index.json?city=%E4%B8%8A%E6%B5%B7
+   }).then(this.getIndexSucc)
+   //如果有 get 请求发送成功则进入 then
+ },
+ getIndexSucc (res) {
+   const resData = res.data.data
+// 判断是否有返回的数据
+   if (res.data) {
+     // 提取返回 json 对象的数据, 赋给已经定义的变量
+     this.swiperList = resData.swiperList
+     this.iconList = resData.iconList
+     this.recommendList = resData.recommendList
+     this.weekendList = resData.weekendList
+   }
+ }
+ ```
+
+ 3. 为 vue 文件添加 `mounted` 生命周期钩子, 保证每次被重新挂载都会发送 ajax 请求.
+
+ ```js
+mounted () {
+ this.getIndex()
+}     
+```
+
+***
+
+**`Icons` 页面中轮播为什么要使用二维数组?**
+
+要展示的效果如下:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191220225513.png)
+
+如果放在一个数组里展示, 第 8 个以后的 `icon` 会超出边界消失, 并不会自动挪到第二个轮播页中. 所以我们要手动按照我们一页能放下的数量进行拆分.
+
+如: `pages[2][3]`, 这就代表了第 3 页, 第 4 个图标.
+
+在 `swiper-slide` 中做两次循环, 将数组完全遍历出来, 如下:
+
+```html
+<swiper-slide v-for="(page, index) in pages" :key="index">
+  <div v-for="(innerItem, innerIndex) in page" :key="innerIndex">
+    <img :src="innerItem.imgUrl">
+  </div>
+</swiper-slide>
+```
 
 ### `Detail` 组件实现
 目标效果:
@@ -165,9 +218,78 @@ F:.
         List.vue
 ```
 
-router 中 path 后的 :id 是什么用?
+**router 中 path 后加的 `:id` 是什么用?**
 
-header 随着屏幕拖动逐渐显示的原理? (解绑全局事件)
+使用 `: + 参数名` 添加在 path 后占位, 当做路由参数. 这个参数可以在组件中区分不同显示不同的页面.
+
+
+在组件的 `router-link` 标签中的使用方法:
+
+```html
+<router-link v-for="item of recommendList" :key="item.id" :to="'/detail/' + item.id">
+```
+或
+
+```html
+<router-link v-for="item of recommendList" :key="item.id" :to="{ name:'detail',params:{'id':item.id} }">
+```
+
+结果都是相同的, 地址栏会显示:
+```
+http://localhost:8080/detail/0001
+```
+
+关于获取路由参数可以参考这篇文章 [《Vue路由获取路由参数》](https://www.cnblogs.com/sese/p/9595625.html)
+
+***
+
+**`header` 会随着屏幕拖动逐渐显现的实现原理? **
+
+首先, 逐渐显示的过程是元素的 `opacity` 由 0 → 1 的过程, 我们只需要让 `header` 的 `opacity` 跟随我们滚动页面的动作关联起来即可.
+
+`document.documentElement.scrollTop` 参数可以帮我们记录现在页面距离顶部的距离, 也就是页面原始的位置为 0, 当我们向下拖拽页面时, 这个值会不断增加.
+
+实现步骤: 
+1. 在 data 中创建对象 `opacityStyle`, 用以绑定元素的 style.
+
+```js
+opacityStyle: {
+  opacity: 0
+}
+```
+
+2. 为页面滚动绑定监听事件
+```js
+mounted () {
+ window.addEventListener('scroll', this.handleScroll)
+}
+```
+
+3. 获取据顶部距离的高度, 并进行控制
+
+```js
+handleScroll () {
+  let top = document.documentElement.scrollTop
+  this.opacityStyle.opacity = top / 100
+	// opacity 超过 1 还是完全不透明, 不会有什么影响.
+}
+```
+
+***
+
+**为何要解绑全局事件？**
+
+如果我们不解绑全局事件, 如上面我们为 `window` 绑定的 `scroll` 事件.
+
+当我们进入别的页面后拖动页面, 依旧会触发 `scroll` 事件, 所以我们要在组件内对全局事件进行解绑.
+
+```js
+deactivated () {
+  window.removeEventListener('scroll', this.handleScroll)
+}
+```
+
+***
 
 公用组件的用处
 
