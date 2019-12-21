@@ -8,7 +8,7 @@ header-img: "img/in-post/2019-10-27/a.jpg"
 catalog: true
 hidden: true
 tags:
-  - 前端学习笔记
+  - CSS
 ---
 ### CSS 定位机制
 CSS 有三种基本的定位机制：**普通流、浮动和绝对定位**。

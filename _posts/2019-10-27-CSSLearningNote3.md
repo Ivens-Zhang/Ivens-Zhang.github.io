@@ -8,7 +8,7 @@ header-img: "img/in-post/2019-10-27/a.jpg"
 catalog: true
 hidden: true
 tags:
-  - 前端学习笔记
+  - CSS
 ---
 
 ### 一、CSS 列表
