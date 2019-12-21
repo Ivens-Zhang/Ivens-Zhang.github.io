@@ -352,12 +352,14 @@ categoryList
 
 2. 子组件内部进行递归
 
+<!-- {% raw %} -->
 ```html
 <div v-for:="item in categoryList">
   {{item.title}}
   <detail-list v-if="item.children" :categoryList="item.children"></detail-list>
 </div>
 ```
+<!-- {% endraw %}) -->
 
 
 
