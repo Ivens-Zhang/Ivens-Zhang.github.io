@@ -224,3 +224,6 @@ es6我们可以去[《极客学院 —— ECMAScript 6 入门》](http://wiki.ji
 6.linex基础指令，一般很少问。就算问也是问你知道什么指令
 
 7.bootstrap实现栅格的原理
+
+
+[看完跳槽少说涨 5 K，前端面试从准备到谈薪完全指南（近万字精华）](https://juejin.im/post/5dfef50751882512444027eb?utm_source=gold_browser_extension)
