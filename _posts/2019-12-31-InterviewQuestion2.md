@@ -44,3 +44,73 @@ tags:
 
 *P.S. 低权重选择器叠加再多也不如一个高权重选择器优先, 上文的权重数值只在其他条件一致时有用.*
 
+### 样式引用优先级
+
+1. 行内样式
+2. 内部样式
+3. 外部引用样式
+
+*注意: `!important` 可以直接大幅增加优先级 ( 不到万不得已不要用 )*
+
+## 二. 居中
+### 水平居中 (4 种方法)
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231215445.png)
+
+
+### 垂直居中
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231232249.png)
+
+通过display:table-cell
+```
+display: table-cell;
+vertical-align: middle;
+text-align: center;        
+```
+
+使用display:flex实现
+```
+flex布局会让容器内的元素得到垂直水平居中
+display: flex;
+justify-content: center;
+align-items: center;
+```
+
+使用display:-webkit-box实现
+```
+display: -webkit-box;
+-webkit-box-align: center;
+-webkit-box-pack: center;
+```
+
+绝对定位和0
+```
+margin: auto;
+position: absolute;
+top: 0; left: 0; bottom: 0; right: 0; 
+```
+
+使用transform:translate定位
+```
+position: absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align: center;
+```
+
+文本垂直水平居中
+```
+height: 100px;
+line-height: 100px;
+```
+
+*参考文章 : [《 CSS实现垂直居中的几种方法 》](https://www.cnblogs.com/jing-tian/p/10969887.html)*
+
+
+## 三. 定位
+
+
+
+## 四. 响应式设计
