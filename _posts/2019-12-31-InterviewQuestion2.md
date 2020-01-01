@@ -142,17 +142,45 @@ line-height: 100px;
   <div class="right"></div>
 </div>
 ```
+父元素包含了两个 `float` 元素, 一个 `inline` 元素. 给父元素的边框显示高度. 可以看出: 
+- **父元素高度并没有被 `float` 撑开**
+
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101115226.png)
 
-父元素包含了两个 float 元素, 一个 inline 元素. 给父元素的 1px 边框显示所占高度, 可以看出: 父元素高度并没有被最高的 float 撑开, 相反高度是由 inline 元素提供的. 如果该父元素后出现其他元素, 页面就会变成这样:
+ 如果该父元素后出现其他元素, 页面就会变成这样:
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101115251.png)
 
-**float 元素并没有把父元素高度撑起来, 这种情况就叫做高度塌陷.**
+**float 元素并没有把父元素高度撑起来, 这种情况就叫做高度塌陷. 而清除浮动就是解决高度塌陷所带来的问题.**
 
-**清除浮动是为了解决高度塌陷的问题.**
+那么, 如何清除浮动呢? 方法如下:
 
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101210356.png)
 
-为什么我们要清除浮动？
+*参考文章 : [《 CSS清除浮动常用方法小结 》](https://www.cnblogs.com/theWayToAce/p/5536781.html)*
 
 ## 四. 响应式设计
+
+**响应式设计**可以根据屏幕分辨率自适应以及自动缩放图片、自动调整布局，这不只是技术的实现，更多的是对于设计的全新思维模式。
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/a.jpg)
+
+上图是我博客的主页, 左图是屏幕宽度大于 800px 时的布局, 右图是小于 800px 时的布局.
+
+---
+
+更改布局思路:
+- **`隐藏 + 折行 + 自适应空间`**
+
+响应式布局设计流程:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101235353.png)
+
+---
+
+### `em` 与 `rem` 的区别?
+`em` 的值并不是固定的，它会继承父级元素的字体大小。如果当前对行内文本的字体尺寸未被设置，则相对于浏览器的默认字体尺寸。
+
+ `rem` 相对大小相对的只是HTML根元素, 不会受到父级的影响。目前，除了 `IE8` 及更早版本外，所有浏览器均已支持rem。
+ 
+ **注意: 在搭配 `media 媒体查询`使用 `rem` 时, 记得给 html 选择器的 `font-size` 属性设置一个绝对大小的值.**
