@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "面向 2020 春招面试题(二)"
-subtitle: "CSS 部分考点"
+subtitle: "————CSS 部分考点"
 author: "Ivens"
 header-mask: 0.1
 header-img: "img/in-post/2019-12-4/th.jpg"
@@ -110,7 +110,49 @@ line-height: 100px;
 
 
 ## 三. 定位
+有时, 我们希望规定元素应该生成的框的类型, 可以使用 `display` 属性进行控制.
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101104700.png)
+
+*其他 `display` 属性参考 : [《 CSS display 属性 》](https://www.w3school.com.cn/css/pr_class_display.asp)*
 
 
+
+### CSS position 属性
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191224144150.png)
+
+利用 `position` 属性, 可以对页面进行布局, 如: 
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101113345.png)
+
+*参考文章 :*
+- [《 CSS Grid 网格布局教程 》](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+- [《 三栏布局的5种解决方案及优缺点 》](https://www.cnblogs.com/chengzp/p/layout.html)
+
+### 重点 ——— 清除浮动
+提及 `float` 布局时, 有一个我们避不开的话题, 那就是**清除浮动**, 而清除浮动的源头则是 `float` 布局带来的高度塌陷问题.
+
+1.什么是高度塌陷?
+
+```
+<div class="container">
+  <div class="left"></div>
+  <span>aaaaaa</span>
+  <div class="right"></div>
+</div>
+```
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101115226.png)
+
+父元素包含了两个 float 元素, 一个 inline 元素. 给父元素的 1px 边框显示所占高度, 可以看出: 父元素高度并没有被最高的 float 撑开, 相反高度是由 inline 元素提供的. 如果该父元素后出现其他元素, 页面就会变成这样:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101115251.png)
+
+**float 元素并没有把父元素高度撑起来, 这种情况就叫做高度塌陷.**
+
+**清除浮动是为了解决高度塌陷的问题.**
+
+
+为什么我们要清除浮动？
 
 ## 四. 响应式设计
