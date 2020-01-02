@@ -109,7 +109,7 @@ line-height: 100px;
 *参考文章 : [《 CSS实现垂直居中的几种方法 》](https://www.cnblogs.com/jing-tian/p/10969887.html)*
 
 
-## 三. 定位
+## 三. 定位 ★
 有时, 我们希望规定元素应该生成的框的类型, 可以使用 `display` 属性进行控制.
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200101104700.png)
@@ -183,4 +183,88 @@ line-height: 100px;
 
  `rem` 相对大小相对的只是HTML根元素, 不会受到父级的影响。目前，除了 `IE8` 及更早版本外，所有浏览器均已支持rem。
  
- **注意: 在搭配 `media 媒体查询`使用 `rem` 时, 记得给 html 选择器的 `font-size` 属性设置一个绝对大小的值.**
+ **注意: 在搭配 `media 媒体查询`使用 `rem` 时, 记得给 `html` 选择器的 `font-size` 属性设置一个绝对大小的值.**
+
+## CSS3 新特性 ★
+
+### `transition`
+`transition` 补间动画, 是通过 CSS3 计算生成的动画效果.
+
+
+**过渡属性:**
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102140727.png)
+
+最简单的 Demo:
+```html
+<head>
+  <style>
+    .container{
+      width: 100px;
+      height: 100px;
+      background: red;
+      transition: all 1s;   /* 也可以只规定 width 具体属性进行渐变 */
+    }
+    .container:hover{
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+</body>
+```
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/aa.gif)
+
+在 `transition` 中不光宽度高度可以计算补间动画, 颜色也可以.
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/adsgasdgdsagdgads.gif)
+
+*注 : `transition-timing-function` 属性可以在这个网站进行自定义 --- [`Ceaser CSS EASING ANIMATION TOOL`](https://matthewlein.com/tools/ceaser)*
+
+
+### `animate`
+
+关键帧动画
+- 相当于多个补间动画
+- 定义更灵活
+
+```
+animation: name duration timing-function delay iteration-count direction fill-mode;
+```
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102150249.png)
+
+*注 : animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。*
+
+参考文章：
+- [《 CSS3 animation 属性参考手册 》](https://www.w3school.com.cn/cssref/pr_animation.asp)
+- [《 CSS3 animation-fill-mode 属性参考手册 》](https://www.w3school.com.cn/cssref/pr_animation-fill-mode.asp)
+
+---
+
+补充：逐帧动画
+- 用于无法补间计算的动画
+- 结合雪碧图使用, 避免文件过大
+- 使用steps(), 取消各帧之间的补间动画
+
+如果不使用 steps() 会怎样?
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/754767-20160601114839946-1209231470.gif)
+
+原因是: `animation` 默认以 `ease` 方式过渡，它会在每个关键帧之间插入补间动画，所以动画效果是连贯性的.
+
+解决方法: 使用 `steps()` 帧之间的阶跃动画. 下图为 `steps` 的原理:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102152220.png)
+
+由上图可知:
+- steps(1,start): 动画一开始就跳到 100% 直到下一帧
+- steps(1,end): 保持 0% 的样式直到下一帧.
+
+*用一个成语来形容: `steps(1,end)` 就是寅吃卯粮, 拖到最后才变化.*
+
+附 w3school 思维导图一张:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/754767-20160531142159774-1968341984.jpg)
+
+### `transform`
