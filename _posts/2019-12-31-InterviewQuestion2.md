@@ -221,6 +221,7 @@ line-height: 100px;
 
 *注 : `transition-timing-function` 属性可以在这个网站进行自定义 --- [`Ceaser CSS EASING ANIMATION TOOL`](https://matthewlein.com/tools/ceaser)*
 
+---
 
 ### `animate`
 
@@ -247,7 +248,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 - 结合雪碧图使用, 避免文件过大
 - 使用steps(), 取消各帧之间的补间动画
 
-如果不使用 steps() 会怎样?
+如果不使用 `steps()` 会怎样?
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/754767-20160601114839946-1209231470.gif)
 
@@ -263,8 +264,13 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 
 *用一个成语来形容: `steps(1,end)` 就是寅吃卯粮, 拖到最后才变化.*
 
-附 w3school 思维导图一张:
+附 `animation` 思维导图一张:
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/754767-20160531142159774-1968341984.jpg)
+
+
+*参考文章 : [《 css3 animation实现逐帧动画 》](https://www.cnblogs.com/Fengzp/p/5548493.html)*
+
+---
 
 ### `transform`
