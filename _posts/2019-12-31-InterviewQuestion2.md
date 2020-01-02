@@ -274,3 +274,75 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 ---
 
 ### `transform`
+使用语法:
+```css
+transform: translate | scale | skew | rotate ;
+```
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102171747.png)
+
+- **2D 转换**
+
+**`translate()` 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数**, 如：
+- `transform: translate(50px,100px); 把元素从左侧移动 50 像素，从顶端移动 100 像素.`
+
+**`scale()` 方法，元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数**, 如：
+- `transform: scale(2,4); 宽度转换为原始尺寸的 2 倍，把高度转换为原始高度的 4 倍. 也可以只写一个参数, 即宽高进行等比例缩放. `
+
+**`skew()` 方法，元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数**, 如：
+- `transform: skew(30deg,10deg); 围绕 X 轴把元素翻转 30 度，围绕 Y 轴翻转 10 度.`
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102180456.png)
+
+**`rotate()` 方法，元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。**如: 
+- `transform: rotate(30deg); 把元素顺时针旋转 30 度.`
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102180613.png)
+
+---
+
+- **3D 转换**
+
+实现 3D 转换的关键在于` x 轴、y 轴、z 轴` 的变换.
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200102182053.png)
+
+简单Demo:
+```html
+<!DOCTYPE html>
+<head>
+  <style>
+    .container{
+      height: 400px;
+      width: 400px;
+      border: 1px solid red;
+    }
+    .one{
+      height: 200px;
+      width: 200px;
+      background-color: pink;
+      transition: all 1s;
+    }
+    .one:hover{
+      transform: skew(20deg,20deg);
+      border-radius: 50%;
+      background-color: rebeccapurple;
+      transform: rotate(45deg) scale(.5);
+      transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="one"></div>
+  </div>
+</body>
+</html>
+```
+效果如图:
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/222.gif)
+
+---
+
+
