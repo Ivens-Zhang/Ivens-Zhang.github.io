@@ -58,6 +58,8 @@ tags:
 
 1.盒模型概念
 
+canvas
+
 **12.h5的语义化部分和h5的语义化标签有什么。**这个其实在面试上是比较重要的一个问题.
 
 13.h5 的web worker 还有websocket。这些不需要你真正使用过，但是要明白他们在什么场景下使用就可以了。
@@ -68,8 +70,7 @@ websocket内部还有一些关于协议的部分要弄懂。
 
 html 的嵌套关系
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231183057.png)
-
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200103215703.png)
 #### js部分
 
 这个是重中之重了，如果你js掌握的非常非常好，那么html、css部分问题没答上也没有什么。

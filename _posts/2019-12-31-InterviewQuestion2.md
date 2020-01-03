@@ -11,9 +11,9 @@ tags:
   - 春招面试题
 ---
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231183057.png)
+**本文按下图思路, 对 2020 春招面试 CSS 部分知识点进行总结.**
 
-**本文按上图思路, 对 CSS 部分知识点进行总结.**
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200103215703.png)
 
 ## 前言
 **`HTML` 的元素分类**
@@ -22,9 +22,9 @@ tags:
 
 | 按默认样式分 | 常见元素                   |
 | ------------ | -------------------------- |
-| 块级元素 `block`   | **区块元素** `div / section`     |
-| 行内元素 `inline`  | **文本相关标签** `span / strong` |
-| 行内块级元素 <br> `inline-block` | **表单元素** `input / selection` |
+| 块级元素 `block`   | **区块元素 >** `div / section`     |
+| 行内元素 `inline`  | **文本相关标签 >** `span / strong` |
+| 行内块级元素 <br> `inline-block` | **表单元素 >** `input / selection` |
 
 `block` 元素和 `inline-block` 元素可以自己定义宽高, 而 `inline` 不可以. <br>
 `inline` 和 `inline-block` 可以与其他元素并列在同一行, 而 `block` 不可以.
@@ -50,7 +50,7 @@ tags:
 2. 内部样式
 3. 外部引用样式
 
-*注意: `!important` 可以直接大幅增加优先级 ( 不到万不得已不要用 )*
+*注意: 使用 `!important` 可以直接大幅增加优先级 ( 不到万不得已不要用 )*
 
 ## 二. 居中
 ### 水平居中 (4 种方法)
@@ -58,7 +58,7 @@ tags:
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231215445.png)
 
 
-### 垂直居中
+### 垂直居中 (6 种方法)
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20191231232249.png)
 
@@ -169,7 +169,7 @@ line-height: 100px;
 
 ---
 
-更改布局思路:
+适配小屏布局思路:
 - **`隐藏 + 折行 + 自适应空间`**
 
 响应式布局设计流程:
@@ -185,7 +185,7 @@ line-height: 100px;
  
  **注意: 在搭配 `media 媒体查询`使用 `rem` 时, 记得给 `html` 选择器的 `font-size` 属性设置一个绝对大小的值.**
 
-## CSS3 新特性 ★
+## 五. CSS3 新特性 ★
 
 ### `transition`
 `transition` 补间动画, 是通过 CSS3 计算生成的动画效果.
@@ -213,13 +213,13 @@ line-height: 100px;
   <div class="container"></div>
 </body>
 ```
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/aa.gif)
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/2020-1-3252124235.gif)
 
 在 `transition` 中不光宽度高度可以计算补间动画, 颜色也可以.
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/adsgasdgdsagdgads.gif)
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/2020-1-325234123.gif)
 
-*注 : `transition-timing-function` 属性可以在这个网站进行自定义 --- [`Ceaser CSS EASING ANIMATION TOOL`](https://matthewlein.com/tools/ceaser)*
+*注 : transition-timing-function 属性可以在这个网站进行自定义 --- [`Ceaser CSS EASING ANIMATION TOOL`](https://matthewlein.com/tools/ceaser)*
 
 ---
 
@@ -341,11 +341,11 @@ transform: translate | scale | skew | rotate ;
 ```
 效果如图:
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/222.gif)
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/202013221551.gif)
 
 ---
 
-## 预处理器
+## 六. 预处理器
 ### 相较原生 `CSS` 的优势
 - 添加了很多 CSS 不具备的特性
 - 提升了 CSS 文件的组织
@@ -593,7 +593,7 @@ button:hover {
 
 - *extend 只会在同一媒体查询中扩展选择器。*
 
-有效：
+√ 有效：
 ```less
 @media (max-width: 1024px) {
   .feed {
@@ -605,7 +605,7 @@ button:hover {
 }
 ```
 
-无效:
+× 无效:
 ```less
 .feed {
   padding: 20px;
@@ -721,3 +721,4 @@ div .col-2 {
 ```
 
 *参考文档 ：[《 Less 中文网 》](https://less.bootcss.com/)*
+
