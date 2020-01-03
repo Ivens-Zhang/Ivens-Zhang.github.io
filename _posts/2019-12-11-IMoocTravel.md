@@ -251,6 +251,7 @@ http://localhost:8080/detail/0001
 `document.documentElement.scrollTop` 参数可以帮我们记录现在页面距离顶部的距离, 也就是页面原始的位置为 0, 当我们向下拖拽页面时, 这个值会不断增加.
 
 实现步骤: 
+
 1. 在 data 中创建对象 `opacityStyle`, 用以绑定元素的 style.
 
 ```js
