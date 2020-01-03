@@ -345,4 +345,379 @@ transform: translate | scale | skew | rotate ;
 
 ---
 
+## 预处理器
+### 相较原生 `CSS` 的优势
+- 添加了很多 CSS 不具备的特性
+- 提升了 CSS 文件的组织
+- 使 CSS 更易维护和扩展 
+- 增加了一些编程特性，无需考虑浏览器的兼容性问题
 
+三大主流 CSS 预处理器:
+
+**`Sass：`**
+
+Sass 是采用 Ruby 语言编写的一款 CSS 预处理语言，它诞生于2007年，是最大的成熟的 CSS 预处理语言。最初它是为了配合 HAML（一种缩进式 HTML 预编译器）而设计的，因此有着和 HTML 一样的缩进式风格.
+
+虽然缩进式风格可以有效缩减代码量，强制规范编码风格，但它一方面并不为大多数程序接受，另一方面无法兼容已有的 CSS 代码。这也是 Sass 虽然出现得最早，但远不如 LESS 普及的原因.
+
+Sass 和 SCSS 其实是同一种东西，我们平时都称之为 Sass，两者之间不同之处有以下两点：
+1. 文件扩展名不同
+2. Sass 是以严格的缩进式语法规则来书写，不带大括号{}和分号; 而 Scss 的语法书写类似于 CSS. 
+
+**`Less：`**
+
+Less 是一门采用 JavaScript 语言编写 CSS 预处理语言.
+
+它扩充了 CSS 语言，增加了诸如变量、混合（mixin）、函数等功能，让 CSS 更易维护、方便制作主题、扩充。
+
+Less 可以运行在 Node 或浏览器端.
+
+**`Stylus:`**
+
+可以省略原生CSS中的大括号{}，逗号， 和分号 ；类似于python语言的编程风格
+
+由于其语法灵活的问题，如果没有团队规范，那么就会带来团队开发混乱，维护起来比较麻烦，各种语法混杂。
+
+---
+
+**综上, 我决定以 `Less` 语言作为主力预处理器, 原因在于: 语法简单, 适用性广, 更为普及.**
+
+*可能有人会觉得 Less 在处理一些复杂语法时不如 Sass, 但我想我自己并非专业 CSS 工程师, 也不会在 CSS 中运用到一些极度复杂的语法.*
+
+
+### 预处理器新特性
+- 嵌套反映层级和约束
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/202013105147.jpg)
+
+Less 提供了使用 `嵌套（nesting）`代替层叠或与层叠结合使用的能力。用 Less 书写的代码更加简洁，并且模仿了 HTML 的组织结构( `&` 表示当前选择器的父级 )。
+
+- 变量
+
+无需多说，看代码一目了然：
+```less
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+```
+编译为：
+```css
+#header {
+  width: 10px;
+  height: 20px;
+}
+```
+
+- `Mixin` 和 `Extend`
+
+`混合（Mixin）`是一种将一组属性从一个规则集包含（或混入）到另一个规则集的方法。假设我们定义了一个类（class）如下：
+```less
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+```
+
+如果我们希望在其它规则集中使用这些属性呢？没问题，我们只需像下面这样输入所需属性的类（class）名称即可，如下所示：
+```less
+#menu a {
+  color: #111;
+  .bordered();
+}
+
+.post a {
+  color: red;
+  .bordered();
+}
+```
+编译结果:
+```css
+#menu a {
+  color: #111;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+.post a {
+  color: red;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+```
+
+`.bordered` 类所包含的属性就将同时出现在 `#menu a` 和 `.post a` 中了。
+
+关于 `Mixins` 还有几个知识点:
+
+i. `.class 选择器` 和 `#id 选择器` 都可以作为 mixins 使用
+
+ii. `mixins` 定义时如果加上 `()` 自身则不会被编译出来.
+
+iii. `mixins` 不仅可以包含属性，还可以包含选择器.
+
+For example:
+```less
+.my-hover-mixin() {
+  &:hover {
+    border: 1px solid red;
+  }
+}
+button {
+  .my-hover-mixin();
+}
+```
+Outputs:
+```css
+button:hover {
+  border: 1px solid red;
+}
+```
+---
+
+`拓展 (Extend)` 是一个LESS伪类，它通过使用 `:extend` 选择器在一个选择器中扩展其他选择器样式。
+
+**既然 extend 和 mixins 都可以用作引用其他类中的样式, 那么他们在使用的场景上有什么差异呢?**
+
+
+一个标准按钮样式：
+```less
+.btn {
+  background: blue;
+  color: white;
+}
+```
+
+如果你想在一个更具体的按钮中引用该样式, 可以使用 mixins 轻松地将该类混合到另一个类中，从而避免逐个进行复制粘贴：
+
+```less
+.round-button {
+  .btn;
+  border-radius: 4px;
+}
+```
+
+乍一看，这似乎没有问题，但是如果查看编译后的 CSS 文件，我们会发现重复项浪费了我们很多空间:
+
+```css
+.btn {
+  background: blue;
+  color: white;
+}
+
+.round-button {
+  background: blue;
+  color: white;
+  border-radius: 4px;
+}
+```
+
+在 CSS 中我们可以对选择器进行分组，用较少的代码量来完成复用：
+
+```css
+.btn, .round-button {
+  background: blue;
+  color: white;
+}
+
+.round-button {
+  border-radius: 4px;
+}
+```
+
+那在 Less 中可以完成相同工作是什么呢? 没错, 那就是 `Extend`, 它发布与 Less @1.4 版本中.
+
+```less
+.btn {
+  background: blue;
+  color: white;
+}
+
+.round-button {
+  &:extend(.btn);
+  border-radius: 4px;
+}
+```
+
+编译后结果：
+
+```css
+.btn, .round-button {
+  background: blue;
+  color: white;
+}
+
+.round-button {
+  border-radius: 4px;
+}
+```
+
+注意:
+- *extend 使用类中样式, 默认不引用其中子选择器. 可以通过添加 all 关键字来强制编译器包括所有嵌套的选择器.*
+
+```less
+.footer {
+  padding: 20px;
+  h2 {
+    color: white;
+  }
+}
+
+.feed {
+  &:extend(.footer all);
+}
+```
+
+编译输出：
+
+```css
+.footer, .feed {
+  padding: 20px;
+}
+
+.footer h2, feed h2 {
+  color: white;
+}
+```
+
+还可以指定特定的嵌套选择器：
+
+```less
+.feed {
+  &:extend(.footer h2);
+}
+```
+
+- *extend 只会在同一媒体查询中扩展选择器。*
+
+有效：
+```less
+@media (max-width: 1024px) {
+  .feed {
+    padding: 20px;
+  }
+  .sig {
+    &:extend(.feed);
+  }
+}
+```
+
+无效:
+```less
+.feed {
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .sig {
+    &:extend(.feed);
+  }
+}
+```
+
+所以, 说下结论:
+
+**使用 `extend` 比使用 `mixins` 最后编译生成的代码大小会小一些.**
+
+**只复用静态样式时使用 `extend`, 需要传参动态复用样式时使用 `mixins`.**
+
+```less
+.btn(@color) {
+  background: @color;
+  border: 1px solid darken(@color, 15);
+  color: #fff;
+  &:hover {
+    background: lighten(@color, 10);
+    border-color: darken(@color, 5);
+  }
+}
+```
+
+这种情况下使用 `mixin`，可以非常轻松地定义一堆不同的按钮：
+
+```less
+.btn-success {
+  .btn(#18682f);
+}
+
+.btn-alert {
+  .btn(#9b6910);
+}
+
+.btn-error {
+  .btn(#9b261a);
+}
+```
+
+---
+
+- 循环
+
+`Loops` 语句允许我们多次执行一个语句或一组语句。 当`递归 mixin` 与 `Guard 表达式`和模式匹配组合时，可以创建各种迭代/循环结构。
+
+语法:
+
+```css
+.循环名(参数1, 参数2, ..) when (条件1) and (条件2){
+  // 真正被编译出的部分
+  ...
+  // 用来进入下一个循环部分
+  .循环名(参数运算, 如: @n+1,..);
+}
+```
+
+实例:
+```less 
+.loop(@n,@i) when(@n<3) and (@i<5) {
+  #@{n}{
+    width: 1000 * @i px;
+  }
+  .col-@{n}{
+    font-size: 10 * @n px;
+  }
+  .loop(@n+1,@i+1);
+}
+
+div{
+  .loop(1,3);
+}
+```
+编译后结果:
+
+```css
+div #1 {
+  width: 3000 px;
+}
+div .col-1 {
+  font-size: 10 px;
+}
+div #2 {
+  width: 4000 px;
+}
+div .col-2 {
+  font-size: 20 px;
+}
+```
+
+*循环中可以包括 `#id 选择器`, `.class 选择器`, `也可以不加选择器直接写属性`, 不过在使用循环时要放在选择器中, 不然会编译失败.*
+
+---
+
+- `@import CSS` 文件模块化
+
+“导入”的工作方式如预期的一样。你可以导入一个 `.less` 文件，此文件中的所有变量就可以全部使用了：
+
+我们可以将一个复杂页面的样式拆分为几个部分, 如: `header` / `footer` / `variable` 等. 
+
+一个 less 文件负责对应一块的样式, 最后编译各个 less 文件导入的总文件即可.
+
+如果导入的文件是 `.less` 扩展名，则可以将扩展名省略掉:
+```less
+@import "library"; // library.less
+@import "typo.css";
+```
+
+*参考文档 ：[《 Less 中文网 》](https://less.bootcss.com/)*
