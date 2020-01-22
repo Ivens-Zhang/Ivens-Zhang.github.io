@@ -10,8 +10,9 @@ tags:
   - 运维
 ---
 
-> 好久没有写文章了, 一看上一次的文章还是一月四号的.
-> 最近一直忙于弄服务器, 网站, Linux这上面. 花了挺多时间, 不过收获颇丰, 写下来用以自勉.
+好久没有写文章了, 一看上一次的文章还是一月四号的.
+
+最近一直忙于弄服务器、网站、Linux 这上面. 花了挺多时间, 不过收获颇丰, 写下文章用以自勉.
 
 ## 一. 购买云服务器
 
@@ -96,8 +97,8 @@ tags:
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122204947.png)
 
 这时会自动生成两个解析, 一个 `www` 一个 `@` , 对应的是:
-- www.AAAAAA.com
-- AAAAAA.com
+- **`www.AAAAAA.com`**
+- **`AAAAAA.com`**
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122205039.png)
 
@@ -105,7 +106,7 @@ tags:
 
 如果在购买服务器时没有选择宝塔面板, 那么我们可以打开[**宝塔 Linux 官网**](https://www.bt.cn/download/linux.html), 拉至底部根据自己的系统进行安装.
 
-首先, 我们进入阿里云后台, 进入你的云服务器实例, 点击`本实例安全组 > 配置规则`, 开放 ``(8888|888|80|443|20|21)`` 端口.
+首先, 我们进入阿里云后台, 进入你的云服务器实例, 点击`本实例安全组 > 配置规则`, 开放 ``(8888|888|80|443|20|21)`` 这几个端口.
 
 设置完成, 返回实例, 点击 `远程连接`用自己的账号登录, 在命令行中输入 `bt`, 完成设置
 
@@ -144,18 +145,18 @@ release the following port (8888|888|80|443|20|21) in the security group
 ==================================================================
 ```
 
-点击网址, 进入宝塔面板
+点击网址, 进入宝塔面板, 在软件商店中下载安装以下应用
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122211420.png)
-
-在软件商店中下载安装上图应用.
 
 点击 `宝塔一键部署源码`, 找到 `WordPress` 点击:
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122211635.png)
 
-进入生成的网址, 填入账户名、密码、数据库名即可.
+进入生成的网址, 填入账户名、密码、数据库名即可
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122211923.png)
 
-现在, 我们的主页就上线成功了, 现在可以进入后台对我们的博客进行优化. `WordPress` 网上的教程很多, 我就不再赘述了.
+现在, 我们的主页就上线成功了.
+
+我们可以进入后台对我们的博客进行优化. `WordPress` 网上的教程很多, 我就不再赘述了.
