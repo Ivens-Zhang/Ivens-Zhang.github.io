@@ -76,7 +76,7 @@ tags:
 
 **终审大约 5 天左右, 备案就可以下来.**
 
-## 云解析 DNS
+## 四. 云解析 DNS
 
 当我们的域名审批下来, 就可以把域名进行解析了.
 
@@ -102,7 +102,7 @@ tags:
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200122205039.png)
 
-## 四. 上线主页
+## 五. 上线主页
 
 如果在购买服务器时没有选择宝塔面板, 那么我们可以打开[**宝塔 Linux 官网**](https://www.bt.cn/download/linux.html), 拉至底部根据自己的系统进行安装.
 
