@@ -5,7 +5,7 @@ subtitle: '————域名、云服务器与 DNS'
 author: "Ivens"
 header-mask: 0.2
 catalog: true
-header-img: "img/in-post/2019-12-17/th.jpg"
+header-img: "img/in-post/2020-01-22/a.jpg"
 tags:
   - 运维
 ---
