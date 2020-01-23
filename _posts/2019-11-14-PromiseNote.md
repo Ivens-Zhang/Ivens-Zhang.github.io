@@ -3,27 +3,13 @@ layout: post
 title: "Promise学习笔记"
 subtitle: ''
 author: "Ivens"
+catalog: true
 header-mask: 0.1
 header-img: "img/in-post/2019-11-14/th.jpg"
 tags:
   - 前端学习笔记
 ---
 <br>
-
-- [前言](#%e5%89%8d%e8%a8%80)
-  - [什么是并行与并发?](#%e4%bb%80%e4%b9%88%e6%98%af%e5%b9%b6%e8%a1%8c%e4%b8%8e%e5%b9%b6%e5%8f%91)
-  - [既然JS是单线程的，那是如何完成所谓的并行任务的呢?](#%e6%97%a2%e7%84%b6js%e6%98%af%e5%8d%95%e7%ba%bf%e7%a8%8b%e7%9a%84%e9%82%a3%e6%98%af%e5%a6%82%e4%bd%95%e5%ae%8c%e6%88%90%e6%89%80%e8%b0%93%e7%9a%84%e5%b9%b6%e8%a1%8c%e4%bb%bb%e5%8a%a1%e7%9a%84%e5%91%a2)
-- [正文](#%e6%ad%a3%e6%96%87)
-  - [总结](#%e6%80%bb%e7%bb%93)
-  - [Promise是用来解决什么问题的?](#promise%e6%98%af%e7%94%a8%e6%9d%a5%e8%a7%a3%e5%86%b3%e4%bb%80%e4%b9%88%e9%97%ae%e9%a2%98%e7%9a%84)
-  - [有没有更好的写法？](#%e6%9c%89%e6%b2%a1%e6%9c%89%e6%9b%b4%e5%a5%bd%e7%9a%84%e5%86%99%e6%b3%95)
-  - [没有方法再次改进代码?](#%e6%b2%a1%e6%9c%89%e6%96%b9%e6%b3%95%e5%86%8d%e6%ac%a1%e6%94%b9%e8%bf%9b%e4%bb%a3%e7%a0%81)
-  - [Promise方法](#promise%e6%96%b9%e6%b3%95)
-    - [Promise.prototype.then()](#promiseprototypethen)
-    - [Promise.prototype.catch()](#promiseprototypecatch)
-    - [Promise.all()](#promiseall)
-    - [Promise.race()](#promiserace)
-    - [Promise.resolve()与Promise.reject()](#promiseresolve%e4%b8%8epromisereject)
 
 ## 前言
 
@@ -95,7 +81,7 @@ after setTimeout()
 (等待1秒后)
 Done
 ```
-能看出来,代码并没有按照我们的顺序执行,这在一些互不影响的语句中其实没什么,**但是当第二句语句要使用上一句语句的返回值时**,程序就会出现问题.
+能看出来,代码并没有按照我们代码的顺序执行,这在一些互不影响的语句中其实没什么,**但是当第二句语句要使用上一句语句的返回值时**,程序就会出现问题.
 
 ### 有没有更好的写法？
 **AJAX就是典型的异步操作：**
