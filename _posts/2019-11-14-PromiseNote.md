@@ -9,9 +9,6 @@ header-img: "img/in-post/2019-11-14/th.jpg"
 tags:
   - 前端学习笔记
 ---
-<br>
-
-## 前言
 
 **在学习`Promise`之前有个问题需要弄明白.**
 
