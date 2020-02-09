@@ -114,7 +114,7 @@ instanceOf
 
 *请参考 :* [*《 JavaScript实现继承 》*](https://segmentfault.com/a/1190000016184431#item-5)
 
-new 和 object.create 区别
+new 和 Object.create 区别
 
 在js中，创建对象有三种方式 ：
 1. {}
@@ -128,6 +128,8 @@ new 和 object.create 区别
 ### 1. 变量提升
 **JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。**
 
+<img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200208225252.png"  />
+
 一般变量的声明为以下形式：
 ```js
 var a=10;
@@ -139,7 +141,7 @@ var a;
 //执行阶段
 a=10;
 ```
-预编译阶段，js 将其分解为`变量声明`与`变量赋值`。
+**预编译阶段，js 将其分解为`变量声明`与`变量赋值`。**
 
 一般函数声明：
 ```js
@@ -158,6 +160,7 @@ f = function () {
 ---
 
 **那么看两段相似的代码**
+
 ```js
 f();//=>?
 var f = function () {
@@ -168,7 +171,7 @@ function f() {
   console.log("function");
 }
 ```
-控制台打印结果 "function"。另一段代码:
+控制台打印结果 "`function`"。另一段代码:
 ```js
 var f = function () {
   console.log("var");
@@ -179,7 +182,7 @@ function f() {
 }
 f();//=>?
 ```
-控制台打印结果 "var"。
+控制台打印结果 "`var`"。
 
 **为什么会有这样结果上的差异呢? 我们可以看一下**
 
@@ -205,3 +208,156 @@ f = function () {
 }
 f();//=>"var"
 ```
+
+### 2. 作用域和作用域链
+
+推荐文章: [《 深入理解 JavaScript 作用域和作用域链 》★★★](https://www.cnblogs.com/fundebug/p/10535230.html)
+
+**在 ES6 之前, JavaScript 中只用两种作用域: `全局作用域` 和 `函数作用域` .**
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200208232934.png)
+
+没有块级作用域会带来什么情况?
+
+```js
+if(true) {
+  var name = 'Tom'
+}
+
+for(var i = 0; i < 3; i++) {}
+
+console.log(name)		// Tom
+console.log(i)		// 2
+```
+
+这些原本是块级作用域的变量, 在 JavaScript 中在预编译时会自动声明为全局变量, 这样会造成污染全局命名空间, 容易引起命名冲突。
+
+> 这就是为何 jQuery、Zepto 等库的源码，所有的代码都会放在`(function(){....})()`中。因为放在里面的所有变量，都不会被外泄和暴露，不会污染到外面，不会对其他的库或者 JS 脚本造成影响。这是函数作用域的一个体现。
+
+---
+
+#### 全局作用域和函数作用域
+
+直接看一个例子:
+
+```js
+var outVariable = "我是最外层变量"; //最外层变量
+function outFun() { //最外层函数
+    var inVariable = "内层变量";
+    function innerFun() { //内层函数
+        console.log(inVariable);
+    }
+    innerFun();
+}
+console.log(outVariable); //我是最外层变量
+outFun(); //内层变量
+console.log(inVariable); //inVariable is not defined
+innerFun(); //innerFun is not defined
+```
+
+每一个函数中, 命名的变量都是独立的, 只能在本函数内使用, 无法在全局中使用.
+
+- 所有末定义直接赋值的变量自动声明为拥有全局作用域
+
+```js
+function outFun2() {
+    variable = "未定义直接赋值的变量";
+    var inVariable2 = "内层变量2";
+}
+outFun2();//要先执行这个函数，否则根本不知道里面是啥 ★★★
+console.log(variable); //未定义直接赋值的变量
+console.log(inVariable2); //inVariable2 is not defined
+```
+
+- 所有 `window` 对象的属性拥有全局作用域
+
+---
+
+#### 作用域链的概念
+
+要解释作用域链, 我们首先得解释什么是自由变量.
+
+> 我们可以将自由变量粗略地理解为: 定义在函数父级的变量.
+
+```js
+var a = 100
+function fn() {
+    console.log(a) // 这里的a在这里就是一个自由变量
+}
+fn()
+```
+
+那么什么是作用域链呢?
+
+我们可以理解为: 当函数中需要使用一个变量, 函数会首先在自身内部寻找, 如果找不到就向上到父级中寻找, 直到找到全局变量.
+
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200208235543.png)
+
+---
+
+#### 自由变量的取值问题
+
+```js
+var x = 10
+function fn() {
+  console.log(x)
+}
+function show(f) {
+  var x = 20
+  f() //10，而不是20
+}
+show(fn)
+```
+
+在 `fn` 函数中，取自由变量 x 的值时，要到哪个作用域中取？——**要到创建 `fn` 函数的那个作用域中取，无论 `fn` 函数将在哪里调用。**
+
+> **作用域中取值, 这里强调的是 “创建”，而不是 “调用”**，切记切记——其实这就是所谓的 "静态作用域"
+
+---
+
+#### let 和 const 的优点
+
+1. 暂时性死区, 在块级作用域内定义不会被提升为全局变量
+2. 不允许重复命名, 否则会报错
+3. 循环中方便使用
+
+```js
+for(var i = 0; i < 3; i++) {}
+console.log(i)		// 2
+------------------------------------------
+for(let i = 0; i < 3; i++) {}
+console.log(i)		// i is not defined
+```
+
+```js
+<button>测试1</button>
+<button>测试2</button>
+<button>测试3</button>
+<script type="text/javascript">
+   var btns = document.getElementsByTagName('button')
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].onclick = function () {
+        console.log('第' + (i + 1) + '个')
+      }
+    }
+</script>
+// 点击任意一个按钮，后台都是弹出 “第四个”, 这是因为 i 是全局变量, 执行到点击事件时，此时 i 的值为 3。
+```
+
+```js
+// 修改方法如下: 
+for (let i = 0; i < btns.length; i++) {
+  btns[i].onclick = function () {
+    console.log('第' + (i + 1) + '个')
+  }
+}
+```
+
+
+
+
+
+
+
+
+
