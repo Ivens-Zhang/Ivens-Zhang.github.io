@@ -1,5 +1,5 @@
 ---
-layout: post
+ layout: post
 title: "面向 2020 春招面试题(三)"
 subtitle: "————JavaScript 部分考点"
 author: "Ivens"
@@ -110,9 +110,41 @@ if (obj.a == null) {
 
 instanceOf
 
+```js
+// 输出以下方法执行的结果
+function Foo () {
+  this.a = function () {
+    console.log('1')
+  }
+  Foo.a = function () {
+    console.log('2')
+  }
+}
+Foo.prototype.a = function () {
+  console.log('3')
+}
+Foo.a = function () {
+  console.log('4')
+}
+Foo.a()		// 这里直接使用 Foo 对象自带的 a 方法, 结果为: 4
+var obj = new Foo()		// 将 Foo 作为类生成对象 obj, 将 a 方法绑定 obj 对象, 替换原有的 Foo 类中的 a 方法.
+obj.a()		// 执行 obj 对象 a 方法, 结果为: 1
+Foo.a()		// 执行 Foo 类中的 a 方法, 结果为: 2
+```
+
+
+
+
+
 ### JavaScript 中继承是怎么实现的 ?
 
 *请参考 :* [*《 JavaScript实现继承 》*](https://segmentfault.com/a/1190000016184431#item-5)
+
+`new` 关键字的原理
+
+1. 执行, 形成函数作用域, 形参赋值, 变量提升
+2. 创建一个对象, 将对象的 `__proto__` 绑定类的 `prototype`, 将类中函数的 `this` 执行新建的对象.
+3. 返回创建的对象
 
 new 和 Object.create 区别
 
@@ -188,7 +220,7 @@ f();//=>?
 
 因为在预编译阶段函数声明提前优先于函数表达式. 因此第二段代码在预编译时会做如下的处理:
 ```js
-/* 预编译阶段
+ /* 预编译阶段
  *函数声明提前优先级别更高，先进行预编译,并对f进行了赋值。
  *在预编译阶段后于函数声明，f经历两次赋值，后来的赋值替代了原先的赋值，表现为f执行函数表达式。
  */
@@ -453,6 +485,8 @@ console.log(s1.getName());		// Jack
 
 推荐文章： [《 深入理解 JavaScript 中的 this 》](http://caibaojian.com/deep-in-javascript-this.html)
 
+<img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200210154031.png"  />
+
 **第一, JavaScript 中的 `this` 与传统面向对象编程语言 (如: JAVA, C#) 中的 `this` 其实不是一个概念. 在 JavaScript 中:**
 
 > `this` 是一个指针, 指向我们调用函数的对象.
@@ -497,15 +531,17 @@ console.log(name1()); // Jay Global
 console.log(name2.print()) // Jay Details, 因为这是由 name2 对象调用的函数, 而 name2 指向 person.details
 ```
 
+回调函数中的 `this` 一般都是 `window`.
+
 ---
-
-
 
 #### 箭头函数
 
-<img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200210154031.png"  />
-
 [《 ES6 入门 —— 箭头函数 》](http://es6.ruanyifeng.com/#docs/function#箭头函数)
+
+在箭头函数中, 他的 `this` 是函数定义时所属上下文的 `this`, 例如定义在最外层, 则 `this = window`, 且无法使用 `call, apply, bind` 等方法进行修改.
+
+箭头函数无法被 `new`, 因为箭头函数没有 `this` 和 `prototype`.
 
 ---
 
@@ -552,6 +588,19 @@ person.fullName.call(person1, "Seattle", "USA");		// Bill Gates Seattle USA
 fun.call(this, arg1, arg2)
 fun.apply(this, [arg1, arg2])
 ```
+
+如果携带的参数在三个之内, `call` 与 `apply` 性能基本一致, 如果超过 3 个, `call` 的性能更优秀. (JQuery 源码中作者也提到这个概念)
+
+如果要将一个数组作为参数传入 `call` 中该如何写?
+
+```js
+let arr = [1,2,3]
+function fn (x,y,z) {}
+fn.call(obj, arr)		// 如果我们这样写, 那相当于 x = [1,2,3], y = z = undefined
+fn.call(obj, ...arr)		// 这样才是正确的写法.
+```
+
+
 
 **bind 与 apply 和 call 的区别**
 
@@ -831,6 +880,26 @@ array.splice(index,howmany,item1,.....,itemX)
 
 ```js
 var arr = arr1.concat(arr2, arr3);   // 结果为: arr1 + arr2 + arr3
+```
+
+---
+
+### `flat()` 语法
+
+`flat()` 方法会按照一个可指定的**深度递归遍历**数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+
+```js
+var newArray = arr.flat(depth)
+```
+
+`depth` 可选, 指定要提取嵌套数组的结构深度，默认值为 1。
+
+如果要完全遍历数组, 可以将 `depth` 定义为 `Infinity`.
+
+```js
+//使用 Infinity，可展开任意深度的嵌套数组
+var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+arr4.flat(Infinity);		// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 
 ## Math 对象常用方法
@@ -1183,6 +1252,8 @@ avgHeight = stus.reduce((temp, current, index) => {
 console.log(avgHeight)
 ```
 
+---
+
 **filter 过滤器**
 
 用如其名, 用来筛选数组的.
@@ -1196,6 +1267,8 @@ res = arr.filter(item => {
 })
 console.log(res)
 ```
+
+---
 
 **forEach 迭代**
 
@@ -1211,21 +1284,111 @@ stus.forEach((item, index) => {
 // 学号: 3, 姓名: David
 ```
 
+---
 
+**keys/ values/ entries**
+
+ES6 提供三个新的方法——`entries()`，`keys()`和`values()`——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用`for...of`循环进行遍历，唯一的区别是`keys()`是对键名的遍历、`values()`是对键值的遍历，`entries()`是对键值对的遍历。
+
+```javascript
+for (let index of ['a', 'b'].keys()) {
+  console.log(index);
+}
+// 0
+// 1
+
+for (let elem of ['a', 'b'].values()) {
+  console.log(elem);
+}
+// 'a'
+// 'b'
+
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}
+// 0 "a"
+// 1 "b"
+```
+
+如果不使用`for...of`循环，可以手动调用遍历器对象的`next`方法，进行遍历。
+
+```javascript
+let letter = ['a', 'b', 'c'];
+let entries = letter.entries();
+console.log(entries.next().value); // [0, 'a']
+console.log(entries.next().value); // [1, 'b']
+console.log(entries.next().value); // [2, 'c']
+```
+
+---
+
+**`for..in` & `for..of`**
+
+|         | 数组  | Json |
+| ------- | ----- | ---- |
+| for..in | index | √    |
+| for..of | value | ×    |
+
+*`for..of` 是为了靠近 Java 做出的调整, 内部为 迭代器.*
 
 ### 字符串
 
+**`startsWith` & `endsWith`**
 
+参数为字符串, 判断字符串开头结尾是否为特定字符串, 返回布尔值.
 
 ### 面向对象
 
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200219212529.png)
 
+**JavaScript 中的面向对象并非真实的面向对象, 而是提供的语法糖.**
 
+```js
+--------------------------------------------------------
+// 新版本写法
+--------------------------------------------------------
+class Stu {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  sayHello() {
+    console.log(`name: ${this.name}, age: ${this.age}`);
+  }
+}
 
+var s1 = new Stu('tom', 22)
+s1.sayHello()		// name: tom, age: 22
 
+class OldStu extends Stu {
+  constructor(name, age, gender) {
+    super(name, age)
+    this.gender = gender
+  }
+  ImOld () {
+    console.log(`我是${this.age}岁的${this.gender}生`);
+  }
+}
 
+var os1 = new OldStu('LiLi', 15, '女')
+os1.ImOld()		// 我是15岁的女生
 
-消除异步的三种方法:
+--------------------------------------------------------
+// 老版本写法
+--------------------------------------------------------
+function User(name, pwd) {
+  this.name = name
+  this.pwd = pwd
+}
+User.prototype.sayHello = function () {  
+  console.log(this.name, this.pwd);
+}
+
+var user1 = new User('Tom', 'a123')
+user1.sayHello()
+```
+
+### 消除异步的三种方法:
 
 回调函数 - 简单, 但是容易出现回调地狱
 
@@ -1234,3 +1397,10 @@ Promise - 如果加入过多逻辑语句会臃肿
 Generator - 适合加入逻辑语句
 
 async/await - Generator 的语法糖, 省去 .next() 步骤
+
+
+
+- [ ] 需要系统复习一下正则
+
+ 
+
