@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "50 + 1 政策对中国足球的一点启示"
+title: "50+1 政策对中国足球的一点启示"
 subtitle: "
 author: "Ivens"
 header-mask: 0.1
