@@ -1,5 +1,5 @@
 ---
- layout: post
+layout: post
 title: "面向 2020 春招面试题(三)"
 subtitle: "————JavaScript 部分考点"
 author: "Ivens"
