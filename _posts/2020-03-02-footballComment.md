@@ -5,7 +5,6 @@ subtitle: "
 author: "Ivens"
 header-mask: 0.1
 header-img: "img/in-post/2020-3-2/th.jpg"
-catalog: true
 tags:
   - 生活
   - 观点
