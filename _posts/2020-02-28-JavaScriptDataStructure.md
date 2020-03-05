@@ -6,7 +6,6 @@ author: "Ivens"
 header-mask: 0.1
 header-img: "img/in-post/2019-12-4/th.jpg"
 hidden: true
-catalog: true
 tags:
   - 春招面试题
 ---
@@ -246,7 +245,6 @@ console.log(pq1.toString());	// a..1  c..2  b..10
 <img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200304182321.png" style="zoom: 67%;" />
 
 <center>击鼓传花图解</center>
-
 **解决思路：**
 
 击鼓传花，事先约定每次击多少下鼓，利用这个特性我们可以使用队列结构来解决问题。
@@ -452,7 +450,6 @@ console.log(l1.size()); 			// res => 4
 <img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200304222333.png" style="zoom: 67%;" />
 
 <center>双向链表图解</center>
-
 ### 封装双向链表
 
 ```js
@@ -474,11 +471,9 @@ class TwodicLinkedList {
 <img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200304223505.png" style="zoom:67%;" />
 
 <center>双向链表的 append 方法图解</center>
-
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200304223617.png)
 
 <center>双向链表的 insert 方法图解</center>
-
 **完整代码 :**
 
 ```js
