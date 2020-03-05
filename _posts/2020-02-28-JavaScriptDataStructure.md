@@ -90,7 +90,7 @@ console.log(s1.toString());		// a b c
 
 - **十进制转二进制**
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200303222252.png)
+<img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200303222252.png" style="zoom:67%;" />
 
 <center>转换原理</center>
 **完整代码:**
@@ -119,9 +119,9 @@ console.log(transform(100));		// 1 1 0 0 1 0 0
 
 队列( Queue ), 他是一种受限的线性表, 遵循先进先出`FIFO(First In First Out)`的原则.
 
-- 受限之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作
+- 受限之处在于它只允许在表的`前端（front）`进行删除操作，而在表的`后端（rear）`进行插入操作
 
-![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200303223353.png)
+<img src="https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200303223353.png" style="zoom:80%;" />
 
 ### 队列的实现
 
@@ -651,7 +651,112 @@ a1.toString()		// a  b  c
 
 ### 实现集合间的操作: 并集, 交集, 差集, 子集
 
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200305103352.png)
 
+**完整代码 :**
+
+```js
+// 接上文集合实现的代码
+var arrlist1 = new ArrayList()
+var arrlist2 = new ArrayList()
+
+arrlist1.add('a')
+arrlist1.add('b')
+arrlist1.add('c')
+
+arrlist2.add('b')
+arrlist2.add('c')
+arrlist2.add('d')
+
+
+/**
+ * 求两个集合的并集
+ * @param {ArrayList} a1 集合一
+ * @param {ArrayList} a2 集合二
+ * @return {Array} 返回两集合合并后元素的数组
+ */
+function bJi (a1, a2) {
+  let a1Values = a1.values()
+  let a2Values = a2.values()
+  
+  var temp =  a1Values		// 暂存 a1 数组形式的值
+  a2Values.forEach(item => {
+    if (temp.includes(item)){	// 遍历 a2 的数组形式, 如果与暂存中的值一直则跳过
+      return 0		
+    }
+    temp.push(item)		// 将 a2 中不同的值压入暂存数组中
+  })
+  return temp
+}
+
+var bjres = bJi(arrlist1, arrlist2)
+// console.log(...bjres);
+
+/**
+ * 
+ * @param {ArrayList} a1 集合一
+ * @param {ArrayList} a2 集合二
+ * @return {Array} 返回两集合的交集元素的数组
+ */
+function jJi(a1, a2) {
+  let a1Values = a1.values()
+  let a2Values = a2.values()
+  
+  var temp =  a1Values
+  var res = []
+  a2Values.forEach(item => {		// 与求并集方法相反, 如果遍历 a2 发现有值与 a1 相同则压入 temp 中
+    if (temp.includes(item)){
+      res.push(item)
+    }
+  })
+  return res
+}
+
+var jj = jJi(a1, a2)
+// console.log(...jj);
+
+
+/**
+ * 求集合 a1 的差集
+ * @param {ArrayList} a1 集合一
+ * @param {ArrayList} a2 集合二
+ * @return {Array} 返回 a1 差集的集合
+ */
+function chaJi(a1, a2) {
+  // 先求 a1, a2 的交集
+  var jj = jJi(a1, a2)
+  var a1temp = a1.values()
+  jj.forEach(item => { // 如果 a1 中有元素与交集相同则 pop
+    a1temp.pop(item)
+  })
+  return a1temp
+}
+
+var cj = chaJi(a1, a2)
+// console.log(cj);
+
+/**
+ * 判断 a2 是否是 a1 的子集
+ * @param {ArrayList} a1 集合一
+ * @param {ArrayList} a2 集合二
+ * @return {Boolean} 如果 a2 是 a1 的子集, 返回 true 反正返回 false
+ */
+function sonJi(a1, a2) {
+  // 求 a1, a2 的交集
+  var jj = jJi(a1, a2)
+  var isInclude = true
+  a2.values().forEach(item => {	// 遍历 a2, 如果 a2 中的所有元素都包含在交集中, 则返回 true
+    if (!jj.includes(item)){
+      isInclude = false
+    }
+  })
+
+  return isInclude
+}
+
+var sonj = sonJi(a1, a2)
+console.log(sonj);
+```
 
 
 
