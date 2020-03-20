@@ -72,7 +72,7 @@ var reverseWords = str => {
 
 ![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200307162940.png)
 
-可能少一个接收结果的数组, 可以节省一些运行的时间.
+看来少创建一个接收结果的数组, 真的可以节省不少的运行时间.
 
 ## [Array] 17. 电话号码的字母组合
 
@@ -165,5 +165,5 @@ var letterCombinations = function(digits) {
 
 ### 提交结果
 
-*![](https://pic.leetcode-cn.com/0f04efbf5d61b769e8814d49863692e9dea5be73b3db44e73fbd67d9cd28d3bc-file_1583552558911)*
+![](https://raw.githubusercontent.com/Ivens-Zhang/PictureBed-2019.12.9/master/img/20200310114235.png)
 
