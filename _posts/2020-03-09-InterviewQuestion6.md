@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "面向 2020 春招面试题(六)"
 subtitle: "———— 高频面试题部分"
 author: "Ivens"
