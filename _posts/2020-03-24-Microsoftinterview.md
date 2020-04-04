@@ -5,7 +5,6 @@ subtitle: ""
 author: "Ivens"
 header-mask: 0.1
 header-img: "img/in-post/2019-12-4/th.jpg"
-hidden: true
 tags:
   - 职业
 ---
