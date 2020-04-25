@@ -3,7 +3,6 @@ layout: post
 title: "解决 Quasar 重置校验后 lazy-rules 一起被重置的问题"
 subtitle: ""
 author: "Ivens"
-header-mask: 0.1
 tags:
   - Vue.js
 ---
