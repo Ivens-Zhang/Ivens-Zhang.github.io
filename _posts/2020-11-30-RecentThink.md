@@ -29,7 +29,7 @@
 
 今天在 `Twitter` 上写：
 
-<img src="C:\Users\zhangyi\AppData\Roaming\Typora\typora-user-images\image-20201201171559058.png" alt="image-20201201171559058" style="zoom: 67%;" />
+<img src="https://gitee.com/zhangyi98/pictureBed/raw/master/img/image-20201201171559058.png" style="zoom:67%;" />
 
 我觉得这是一个挺好的思路，为什么这么说，首先在人工智能公司不学习人工智能是不可能的，所以我需要了解一个大概，然后用一个认证来给自己背书。其次，可以预见开发组组长很有可能明年第二季度会回到集团研究院，所以我学习一下后端的 `nest.js` 说不定可以派上用场。最后，`csapp`、`计算机网络` 都是老生常谈了，必须得慢慢弥补。
 
